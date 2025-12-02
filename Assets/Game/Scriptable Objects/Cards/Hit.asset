@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6931a1dcfcd5084da9ad8d9da1cd526, type: 3}
-  m_Name: AttackCard
+  m_Name: Hit
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   type: 0
-  icon: {fileID: 0}
+  icon: {fileID: 3277407149050139035, guid: 2109066ae7362924fbd602207addfe23, type: 3}
   description: Deals 2 damage
+  power: 2

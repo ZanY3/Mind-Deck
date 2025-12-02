@@ -13,4 +13,5 @@ public class CardData : ScriptableObject
     public CardType type;
     public Sprite icon;
     public string description;
+    public int power; //like attack damage value or defence value
 }
