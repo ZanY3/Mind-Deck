@@ -14,6 +14,12 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
     [SerializeField] private TMP_Text nameTxt;
     [SerializeField] private TMP_Text descriptionTxt;
     [SerializeField] private TMP_Text typeTxt;
+
+    private void Start()
+    {
+        FillUI();
+    }
+
     public void FillUI()
     {
         nameTxt.text = enemyData.name;

@@ -599,7 +599,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 400}
+  m_SizeDelta: {x: 200, y: 266.66666}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7772126111141592873
 Canvas:
@@ -665,6 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c541dc5a7cfc6204984db230c2cfb59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardDrag
+  droppedOnTarget: 0
 --- !u!114 &8248900475958062805
 MonoBehaviour:
   m_ObjectHideFlags: 0

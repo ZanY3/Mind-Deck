@@ -7,11 +7,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] private TMP_Text healthTxt;
     [SerializeField] private TMP_Text damageTxt;
 
+    private Player player;
+
     private int currentHealth;
     private int damage;
+    private BattleManager battleManager;
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        battleManager = FindAnyObjectByType<BattleManager>();
+
+        battleManager.AddEnemy(this);
+
         ReadData();
         UpdateUI();
     }
@@ -27,16 +35,21 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(int value)
     {
-        if (currentHealth >= damage)
+        if (currentHealth >= value)
         {
-            currentHealth -= damage;
+            currentHealth -= value;
             UpdateUI();
             //Some effects
         }
         if(currentHealth <= 0)
         {
+            battleManager.RemoveEnemy(this);
             Destroy(gameObject);
         }
+    }
+    public void AttackPlayer()
+    {
+        player.TakeDamage(enemyData.damage);
     }
 
 
