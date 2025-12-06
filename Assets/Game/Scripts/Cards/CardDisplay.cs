@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
 {
-    [SerializeField] private CardData cardToDisplay;
-    [HideInInspector] public CardData Card => cardToDisplay;
+    [HideInInspector] public CardData cardToDisplay;
 
     [SerializeField] private Image iconImg;
     [SerializeField] private TMP_Text nameTxt;

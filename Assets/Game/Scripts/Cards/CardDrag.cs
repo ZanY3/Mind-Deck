@@ -42,7 +42,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         cardCanvas.overrideSorting = false;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        CardData card = cardDisplay.Card;
+        CardData card = cardDisplay.cardToDisplay;
 
         if (!droppedOnTarget || card.type != CardData.CardType.Attack)
         {

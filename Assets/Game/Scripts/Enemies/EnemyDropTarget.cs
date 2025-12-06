@@ -13,7 +13,7 @@ public class EnemyDropTarget : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData) //OnCardDrop
     {
         eventData.pointerDrag.GetComponent<CardDrag>().droppedOnTarget = true;
-        CardData card = eventData.pointerDrag.GetComponent<CardDisplay>().Card;
+        CardData card = eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay;
 
         if(card.type == CardData.CardType.Attack)
         {
