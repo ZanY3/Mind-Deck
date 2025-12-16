@@ -639,6 +639,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
   - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
   handParent: {fileID: 1975157957}
+  deckManager: {fileID: 1702557157}
 --- !u!4 &461268575
 Transform:
   m_ObjectHideFlags: 0
@@ -1010,8 +1011,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -72}
-  m_SizeDelta: {x: 1100, y: 500}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566460126
 MonoBehaviour:
@@ -1026,7 +1027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0.27450982}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.92156863}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1247,7 +1248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325.1, y: -108.26715}
+  m_AnchoredPosition: {x: 325.09998, y: -108.26715}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733808807
@@ -1433,7 +1434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 215.86646, y: 107.93321}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1206476185
@@ -2022,6 +2023,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679283410}
   m_CullTransparentMesh: 1
+--- !u!1 &1702557155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1702557156}
+  - component: {fileID: 1702557157}
+  m_Layer: 0
+  m_Name: DeckManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1702557156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702557155}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.9722301, y: -3.79951, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1915514492}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1702557157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702557155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d1922c25bc6f84ea12fa79b0d72327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeckManager
+  startDeck:
+  - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
+  - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
+  - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
+  - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
+  - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
+  - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
+  - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
+  deck: []
+  discardPile: []
 --- !u!1 &1739304504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,6 +2245,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 461268575}
+  - {fileID: 1702557156}
   - {fileID: 495381522}
   - {fileID: 1334307258}
   m_Father: {fileID: 0}

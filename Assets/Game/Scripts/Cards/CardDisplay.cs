@@ -18,14 +18,15 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] private Color defenceCardColor;
 
 
-    private void Start()
+    public void VisualizeCard()
     {
-        VisualizeCard(cardToDisplay);
-    }
+        if (cardToDisplay == null)
+        {
+            Debug.LogError("VisualizeCard called with NULL CardData");
+            return;
+        }
 
-    public void VisualizeCard(CardData cardToVisualize)
-    {
-        if(cardToVisualize.type == CardData.CardType.Attack)
+        if (cardToDisplay.type == CardData.CardType.Attack)
         {
             body.color = attackCardColor;
         }
@@ -34,10 +35,10 @@ public class CardDisplay : MonoBehaviour
             body.color = defenceCardColor;
         }
 
-        nameTxt.text = cardToVisualize.name;
-        descriptionTxt.text = cardToVisualize.description;
-        typeTxt.text = cardToVisualize.type.ToString();
+        nameTxt.text = cardToDisplay.name;
+        descriptionTxt.text = cardToDisplay.description;
+        typeTxt.text = cardToDisplay.type.ToString();
 
-        iconImg.sprite = cardToVisualize.icon;
+        iconImg.sprite = cardToDisplay.icon;
     }
 }

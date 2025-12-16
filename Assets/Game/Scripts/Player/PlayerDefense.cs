@@ -22,7 +22,7 @@ public class PlayerDefense : MonoBehaviour
 
         UpdateUI();
 
-        return Mathf.Max(temp, 0);//Max returns to us what num is higher
+        return Mathf.Max(temp, 0);
     }
     public void UpdateUI()
     {
