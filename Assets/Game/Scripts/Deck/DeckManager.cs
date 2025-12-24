@@ -1,15 +1,12 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class DeckManager : MonoBehaviour
 {   
     [SerializeField] private List<CardData> startDeck;
 
-    [SerializeField] private List<CardData> deck;
-    [SerializeField] private List<CardData> discardPile;
+    private List<CardData> deck;
+    private List<CardData> discardPile;
 
     private void Awake() // Must be initialized in Awake (used by other scripts in Start)
     {
