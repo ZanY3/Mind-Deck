@@ -2,10 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private HandManager handManager;
+    [SerializeField] private PlayerHealth player;
 
     [Header("UI")]
     [Space]
@@ -53,6 +55,12 @@ public class BattleManager : MonoBehaviour
         if (enemies.Count <= 0)
         {
             //RoundEnded
+            player.hasAnxiety = false;
+            player.anxietyDamage = 0;
+
+            player.UpdateUI();
+            Debug.LogWarning("Anxiety = false");
+
             handManager.ClearHand();
             endTurnBtn.SetActive(false);
             finalPanel.SetActive(true);
@@ -62,6 +70,12 @@ public class BattleManager : MonoBehaviour
     public void PlayerLose()
     {
         //RoundEnded
+        player.hasAnxiety = false;
+        player.anxietyDamage = 0;
+
+        Debug.LogWarning("Anxiety = false");
+        player.UpdateUI();
+
         for(int i = 0; i < enemies.Count; i++)
         {
             enemies[i].enabled = false;
@@ -76,7 +90,22 @@ public class BattleManager : MonoBehaviour
     {
         for (int i = 0; i < enemies.Count; i++)// All enemies attack in turn
         {
+            if(player.hasAnxiety)
+            {
+                Debug.LogWarning("Player took damage from anxiety debuff");
+                player.TakeDamage(player.anxietyDamage);
+                yield return new WaitForSeconds(1.5f);
+            }
             enemies[i].AttackPlayer();
+            if (!player.hasAnxiety && enemies[i].Data.enemyType == EnemyData.EnemyType.Debuffer)
+            {
+                player.hasAnxiety = true;
+
+                Debug.LogWarning("Anxiety = true");
+                player.UpdateUI();
+
+                player.anxietyDamage = enemies[i].GetComponent<AnxietyDebuff>().AnxietyDamage;
+            }
             //Some animations for enemy attack
             yield return new WaitForSeconds(1.5f);
         }

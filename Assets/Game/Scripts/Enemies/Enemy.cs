@@ -7,11 +7,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] private TMP_Text healthTxt;
     [SerializeField] private TMP_Text damageTxt;
 
+    [Space]
+    [Header("Not required")]
+    [SerializeField] private TMP_Text debuffDamageTxt;
+
     private PlayerHealth player;
 
     private int currentHealth;
     private int damage;
     private BattleManager battleManager;
+
+    public EnemyData Data => enemyData;
 
     private void Start()
     {
@@ -32,6 +38,10 @@ public class Enemy : MonoBehaviour
     {
         healthTxt.text = currentHealth.ToString();
         damageTxt.text = damage.ToString();
+        if(debuffDamageTxt != null)
+        {
+            debuffDamageTxt.text = GetComponent<AnxietyDebuff>().AnxietyDamage.ToString();
+        }
     }
     public void TakeDamage(int value)
     {

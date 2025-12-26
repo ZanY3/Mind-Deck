@@ -9,10 +9,14 @@ public class PlayerHealth : MonoBehaviour
 
     private int currentHealth;
     private PlayerDefense defense;
+    
+    [HideInInspector] public bool hasAnxiety = false;
+    [HideInInspector] public int anxietyDamage = 0;
 
     [Space]
     [Header("UI/HealthBar")]
 
+    [SerializeField] private GameObject debuffImage;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private TMP_Text healthTxt;
 
@@ -41,6 +45,15 @@ public class PlayerHealth : MonoBehaviour
     {
         if(healthTxt != null && healthBarImage != null)
         {
+            debuffImage.SetActive(hasAnxiety);
+            if(hasAnxiety)
+            {
+                GetComponent<Image>().color = new Color32(224, 255, 194, 255); //#E0FFC2
+            }
+            else
+            {
+                GetComponent<Image>().color = Color.white;
+            }
             healthBarImage.fillAmount = (float)currentHealth / maxHealth;
             healthTxt.text = currentHealth.ToString() + "/" + maxHealth.ToString();
         }
