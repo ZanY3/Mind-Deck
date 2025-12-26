@@ -1,7 +1,5 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 using System.Collections;
 using TMPro;
 
@@ -19,6 +17,7 @@ public class BattleManager : MonoBehaviour
 
     private List<Enemy> enemies;
 
+
     private void Awake()
     {
         enemies = new List<Enemy>();
@@ -32,7 +31,12 @@ public class BattleManager : MonoBehaviour
     {
         enemies.Remove(enemy);
     }
-
+    public void StartBattle()
+    {
+        isPlayerTurn = true;
+        endTurnBtn.SetActive(true);
+        finalPanel.SetActive(false);
+    }
     public void EndPlayerTurn() //When we press "End turn"
     {
         handManager.ClearHand();
