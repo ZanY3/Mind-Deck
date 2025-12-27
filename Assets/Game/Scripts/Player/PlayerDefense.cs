@@ -12,7 +12,11 @@ public class PlayerDefense : MonoBehaviour
         armor += value;
         UpdateUI();
     }
-
+    public void RemoveAllArmor()
+    {
+        armor = 0;
+        UpdateUI();
+    }
     public int CalculateDamage(int damage)
     {
         int temp = damage - armor;

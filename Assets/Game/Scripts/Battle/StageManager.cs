@@ -6,6 +6,7 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] private int currentStage = 1;
     [SerializeField] private int numberOfStages = 5;
+    [SerializeField] private PlayerDefense playerDefense;
 
     [Space]
     [Header("Enemies indexes equal to stage enemies to spawn")]
@@ -27,6 +28,7 @@ public class StageManager : MonoBehaviour
         if(currentStage != numberOfStages)
         {
             currentStage++;
+            playerDefense.RemoveAllArmor();
             battleManager.StartBattle();
             StartStage();
         }
@@ -38,6 +40,7 @@ public class StageManager : MonoBehaviour
     }
     public void StartStage()
     {
+        InteractionState.isDraggingCard = false;
         var enemy = Instantiate(enemiesPrefabs[currentStage - 1], enemySlotPos.position, Quaternion.identity);
         enemy.transform.SetParent(enemySlotPos.transform, false);
         handManager.DrawHand();

@@ -19,7 +19,6 @@ public class BattleManager : MonoBehaviour
 
     private List<Enemy> enemies;
 
-
     private void Awake()
     {
         enemies = new List<Enemy>();
@@ -48,6 +47,11 @@ public class BattleManager : MonoBehaviour
     }
     public void EnemyTurn()
     {
+        if(player.hasAnxiety)
+        {
+            Debug.LogWarning("Player took damage from anxiety debuff");
+            player.TakeDamage(player.anxietyDamage);
+        }
         StartCoroutine(EnemyAttack());
     }
     public void CheckPlayerWin()
@@ -88,15 +92,12 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator EnemyAttack()
     {
-        for (int i = 0; i < enemies.Count; i++)// All enemies attack in turn
+        if(player.hasAnxiety)
         {
-            if(player.hasAnxiety)
-            {
-                Debug.LogWarning("Player took damage from anxiety debuff");
-                player.TakeDamage(player.anxietyDamage);
-                yield return new WaitForSeconds(1.5f);
-            }
-            enemies[i].AttackPlayer();
+            yield return new WaitForSeconds(1.5f);
+        }
+        for (int i = 0; i < enemies.Count; i++) // All enemies attack in turn
+        {
             if (!player.hasAnxiety && enemies[i].Data.enemyType == EnemyData.EnemyType.Debuffer)
             {
                 player.hasAnxiety = true;
@@ -106,6 +107,9 @@ public class BattleManager : MonoBehaviour
 
                 player.anxietyDamage = enemies[i].GetComponent<AnxietyDebuff>().AnxietyDamage;
             }
+
+            enemies[i].AttackPlayer();
+
             //Some animations for enemy attack
             yield return new WaitForSeconds(1.5f);
         }

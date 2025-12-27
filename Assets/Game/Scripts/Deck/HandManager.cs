@@ -4,7 +4,6 @@ using UnityEngine;
 public class HandManager : MonoBehaviour
 {
     [SerializeField] private GameObject cardPrefab; //Without pool system yet
-    [SerializeField] private List<CardData> cards;
     [SerializeField] private Transform handParent;
     [SerializeField] private DeckManager deckManager;
 
