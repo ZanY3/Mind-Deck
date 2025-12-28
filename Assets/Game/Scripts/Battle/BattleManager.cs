@@ -98,6 +98,13 @@ public class BattleManager : MonoBehaviour
         }
         for (int i = 0; i < enemies.Count; i++) // All enemies attack in turn
         {
+            if (enemies[i].Data.enemyType == EnemyData.EnemyType.Defender && enemies[i].GetComponentInChildren<DefenseCell>() != null)
+            {
+                enemies[i].GetComponentInChildren<DefenseCell>().GainDefense();
+                //Some animations for enemy attack
+                yield return new WaitForSeconds(1.5f);
+            }
+
             if (!player.hasAnxiety && enemies[i].Data.enemyType == EnemyData.EnemyType.Debuffer)
             {
                 player.hasAnxiety = true;
@@ -109,9 +116,9 @@ public class BattleManager : MonoBehaviour
             }
 
             enemies[i].AttackPlayer();
-
             //Some animations for enemy attack
             yield return new WaitForSeconds(1.5f);
+
         }
         isPlayerTurn = true;
         endTurnBtn.SetActive(true);

@@ -973,11 +973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandManager
   cardPrefab: {fileID: 8565312338920324948, guid: 250a55201e6cb714dabecd3487501e43, type: 3}
-  cards:
-  - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
-  - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
-  - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
-  - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
   handParent: {fileID: 1975157957}
   deckManager: {fileID: 1702557157}
 --- !u!4 &461268575
@@ -1914,6 +1909,18 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 38
       objectReference: {fileID: 0}
+    - target: {fileID: 7187886962225268642, guid: 8ced0f3320ef22b4c8a86ab2cd92a0a8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187886962225268642, guid: 8ced0f3320ef22b4c8a86ab2cd92a0a8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187886962225268642, guid: 8ced0f3320ef22b4c8a86ab2cd92a0a8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8751731698332795500, guid: 8ced0f3320ef22b4c8a86ab2cd92a0a8, type: 3}
       propertyPath: m_SizeDelta.x
       value: 115
@@ -2321,6 +2328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefenseCell
   defenseAmout: 4
+  defensePerTurn: 2
+  gainsDefenseEveryTurn: 1
   dropTarget: {fileID: 894873816}
   defenseAmoutTxt: {fileID: 1854222348}
 --- !u!1 &1397727164

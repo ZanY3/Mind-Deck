@@ -15,5 +15,5 @@ MonoBehaviour:
   description: Has a shield slot that must be broken before damaging the enemy.
   health: 4
   damage: 2
-  artwork: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  artwork: {fileID: -6646689344434563298, guid: 4507b9073e511fb48a3af7d2371cfb5a, type: 3}
   enemyType: 2

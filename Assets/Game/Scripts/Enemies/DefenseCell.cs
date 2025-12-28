@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 public class DefenseCell : MonoBehaviour, IDropHandler
 {
     [SerializeField] private int defenseAmout;
+    [SerializeField] private int defensePerTurn;
+    [SerializeField] private bool gainsDefenseEveryTurn = false;
     [SerializeField] private EnemyDropTarget dropTarget;
 
     [Space]
@@ -18,10 +20,21 @@ public class DefenseCell : MonoBehaviour, IDropHandler
     private void Start()
     {
         dropTarget.enabled = false;
-        enemy = GetComponent<Enemy>();
+        enemy = GetComponentInParent<Enemy>();
         UpdateUI();
     }
-
+    public void GainDefense()
+    {
+        if(gainsDefenseEveryTurn)
+        {
+            defenseAmout += defensePerTurn;
+            UpdateUI();
+        }
+        else
+        {
+            Debug.LogWarning(enemy.name + "isn't gaining defense per turn");
+        }
+    }
     public void DecreaseDefense(int value)
     {
         if(defenseAmout > value)
