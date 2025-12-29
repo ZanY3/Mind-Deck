@@ -14,9 +14,9 @@ public class StageManager : MonoBehaviour
 
     [Space]
     [Header("Managers/Objects")]
-    [SerializeField] HandManager handManager;
-    [SerializeField] RectTransform enemySlotPos;
-    [SerializeField] BattleManager battleManager;
+    [SerializeField] private HandManager handManager;
+    [SerializeField] private RectTransform enemySlotPos;
+    [SerializeField] private BattleManager battleManager;
 
     private void Start()
     {

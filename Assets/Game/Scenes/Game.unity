@@ -1144,6 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
   handManager: {fileID: 461268574}
+  energyManager: {fileID: 1020069}
   player: {fileID: 1397727168}
   endTurnBtn: {fileID: 317310088}
   finalPanel: {fileID: 1101623035}

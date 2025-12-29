@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 public class BattleManager : MonoBehaviour
 {
     [SerializeField] private HandManager handManager;
+    [SerializeField] private EnergyManager energyManager;
     [SerializeField] private PlayerHealth player;
 
     [Header("UI")]
@@ -40,6 +41,7 @@ public class BattleManager : MonoBehaviour
     }
     public void EndPlayerTurn() //When we press "End turn"
     {
+        energyManager.RefillEnergy();
         handManager.ClearHand();
         isPlayerTurn = false;
         endTurnBtn.SetActive(false);
@@ -70,6 +72,7 @@ public class BattleManager : MonoBehaviour
             finalPanel.SetActive(true);
             finalTxt.text = "Congratulations! You have cleared this round!";
         }
+        energyManager.RefillEnergy();
     }
     public void PlayerLose()
     {
@@ -88,6 +91,7 @@ public class BattleManager : MonoBehaviour
         endTurnBtn.SetActive(false);
         finalPanel.SetActive(true);
         finalTxt.text = "Oh no! You have lost this round!";
+        energyManager.RefillEnergy();
     }
 
     IEnumerator EnemyAttack()

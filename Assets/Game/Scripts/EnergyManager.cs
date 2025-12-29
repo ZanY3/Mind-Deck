@@ -16,12 +16,18 @@ public class EnergyManager : MonoBehaviour
     {
         energyTxt.text = currentEnergy.ToString() + "/" + maxEnergyValue.ToString();
     }
-    public bool EnoughEnergyToPlayCard(int value)
+    public void DecreaseEnergy(int value)
     {
-        if(currentEnergy >= value)
+        if (currentEnergy >= value)
         {
             currentEnergy -= value;
             UpdateUI();
+        }
+    }
+    public bool CheckIsEnoughOnCard(int value)
+    {
+        if(currentEnergy >= value)
+        {
             return true;
         }
         else

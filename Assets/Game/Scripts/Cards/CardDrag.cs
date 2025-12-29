@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -20,9 +21,13 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         cardCanvas = GetComponent<Canvas>();
         energyManager = FindAnyObjectByType<EnergyManager>();
     }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!energyManager.CheckIsEnoughOnCard(cardDisplay.cardToDisplay.energyCost))
+        {
+            eventData.pointerDrag = null;
+            return;
+        }
         InteractionState.isDraggingCard = true;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
         droppedOnTarget = false;
@@ -30,6 +35,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         cardCanvas.overrideSorting = true;
         cardCanvas.sortingOrder = 100;
+        
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -49,13 +55,13 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (!droppedOnTarget || target == null ||
         (target.GetComponent<PlayerHealth>() != null && card.type == CardData.CardType.Attack) ||
-        (target.GetComponent<Enemy>() != null && card.type == CardData.CardType.Defence) ||
-        (energyManager.EnoughEnergyToPlayCard(cardDisplay.cardToDisplay.energyCost) == false))
+        (target.GetComponent<Enemy>() != null && card.type == CardData.CardType.Defence))
         {
             rectTransform.anchoredPosition = startPosition;
         }
         else
         {
+            energyManager.DecreaseEnergy(card.energyCost);
             Destroy(gameObject);
         }
     }

@@ -7,11 +7,11 @@ public class CardDisplay : MonoBehaviour
     [HideInInspector] public CardData cardToDisplay;
 
     [SerializeField] private Image iconImg;
+    [SerializeField] private Image energyImg;
     [SerializeField] private TMP_Text nameTxt;
     [SerializeField] private TMP_Text descriptionTxt;
     [SerializeField] private TMP_Text typeTxt;
     [SerializeField] private TMP_Text energyCostTxt;
-    [SerializeField] private Image energyImg;
 
     [Space]
     [Header("Color settings")]
