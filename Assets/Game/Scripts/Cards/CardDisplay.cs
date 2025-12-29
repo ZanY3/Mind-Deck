@@ -10,12 +10,16 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] private TMP_Text nameTxt;
     [SerializeField] private TMP_Text descriptionTxt;
     [SerializeField] private TMP_Text typeTxt;
+    [SerializeField] private TMP_Text energyCostTxt;
+    [SerializeField] private Image energyImg;
 
     [Space]
     [Header("Color settings")]
     [SerializeField] private Image body;
     [SerializeField] private Color attackCardColor;
-    [SerializeField] private Color defenceCardColor;
+    [SerializeField] private Color defenseCardColor;
+
+    [SerializeField][Range(0f, 1f)] private float energyImgDarkerFactor;
 
 
     public void VisualizeCard()
@@ -29,16 +33,30 @@ public class CardDisplay : MonoBehaviour
         if (cardToDisplay.type == CardData.CardType.Attack)
         {
             body.color = attackCardColor;
+            energyImg.color = attackCardColor;
         }
-        else if(cardToDisplay.type == CardData.CardType.Defence)
+        else if (cardToDisplay.type == CardData.CardType.Defence)
         {
-            body.color = defenceCardColor;
+            body.color = defenseCardColor;
+            energyImg.color = defenseCardColor;
         }
+        energyImg.color = Darken(energyImg.color, energyImgDarkerFactor);
 
         nameTxt.text = cardToDisplay.name;
         descriptionTxt.text = cardToDisplay.description;
         typeTxt.text = cardToDisplay.type.ToString();
+        energyCostTxt.text = cardToDisplay.energyCost.ToString();
+
 
         iconImg.sprite = cardToDisplay.icon;
+    }
+    Color Darken(Color c, float factor)
+    {
+        return new Color(
+            c.r * factor,
+            c.g * factor,
+            c.b * factor,
+            c.a
+        );
     }
 }

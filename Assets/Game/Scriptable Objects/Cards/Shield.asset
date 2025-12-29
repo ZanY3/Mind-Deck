@@ -16,3 +16,4 @@ MonoBehaviour:
   icon: {fileID: -6717884257390833292, guid: 4aa5702bfec7a0844af755a5292fbec1, type: 3}
   description: Blocks 2 damage
   power: 2
+  energyCost: 1

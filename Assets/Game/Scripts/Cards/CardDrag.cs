@@ -8,6 +8,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Canvas canvas;
     private Canvas cardCanvas;
     private CardDisplay cardDisplay;
+    private EnergyManager energyManager;
 
     [HideInInspector] public bool droppedOnTarget;
 
@@ -17,6 +18,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         cardCanvas = GetComponent<Canvas>();
+        energyManager = FindAnyObjectByType<EnergyManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -47,7 +49,8 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (!droppedOnTarget || target == null ||
         (target.GetComponent<PlayerHealth>() != null && card.type == CardData.CardType.Attack) ||
-        (target.GetComponent<Enemy>() != null && card.type == CardData.CardType.Defence))
+        (target.GetComponent<Enemy>() != null && card.type == CardData.CardType.Defence) ||
+        (energyManager.EnoughEnergyToPlayCard(cardDisplay.cardToDisplay.energyCost) == false))
         {
             rectTransform.anchoredPosition = startPosition;
         }

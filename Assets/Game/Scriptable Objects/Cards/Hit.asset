@@ -16,3 +16,4 @@ MonoBehaviour:
   icon: {fileID: 3277407149050139035, guid: 2109066ae7362924fbd602207addfe23, type: 3}
   description: Deals 2 damage
   power: 2
+  energyCost: 1

@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 4391270440281996453}
   - component: {fileID: 7829654775708205862}
   - component: {fileID: 4586265173723756517}
+  - component: {fileID: 5570844264613445652}
   m_Layer: 5
   m_Name: DefenseSlot(Bg)
   m_TagString: Untagged
@@ -192,7 +193,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: -61.199997, y: 2.4}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 115, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7829654775708205862
 CanvasRenderer:
@@ -229,6 +230,23 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &5570844264613445652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522215905328282678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec874d5b4be6164eb957f987f28a1a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefenseCell
+  defenseAmout: 4
+  defensePerTurn: 2
+  gainsDefenseEveryTurn: 1
+  dropTarget: {fileID: 3308693822043084406}
+  defenseAmoutTxt: {fileID: 7096613361027704169}
 --- !u!1 &971439624113134997
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +991,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000015258789, y: 0.000011205673}
-  m_SizeDelta: {x: 85, y: 75}
+  m_SizeDelta: {x: 115, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2918970740294442585
 CanvasRenderer:
@@ -1257,7 +1275,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000015258789, y: 0.000011205673}
-  m_SizeDelta: {x: 65, y: 65}
+  m_SizeDelta: {x: 95, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1385345963488548808
 CanvasRenderer:
@@ -1328,8 +1346,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: -1.87}
+  m_SizeDelta: {x: 200, y: 53.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6882826092268079773
 CanvasRenderer:
@@ -1386,8 +1404,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1424,7 +1442,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 67.53068, y: -7.5251327, z: 67.84965, w: 2.2322083}
+  m_margin: {x: 56.825615, y: -15.43984, z: 57.2873, w: 2.2322083}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1488,7 +1506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43137255, g: 0.6602245, b: 0.7176471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
