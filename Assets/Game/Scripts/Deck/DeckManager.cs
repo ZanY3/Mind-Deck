@@ -51,4 +51,9 @@ public class DeckManager : MonoBehaviour
         discardPile.Clear();
         Shuffle(deck);
     }
+    public void AddCard(CardData card)
+    {
+        deck.Add(card);
+        Debug.Log(card + " added.");
+    }
 }

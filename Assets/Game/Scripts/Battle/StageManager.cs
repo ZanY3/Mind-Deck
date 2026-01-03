@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,8 +16,10 @@ public class StageManager : MonoBehaviour
     [Space]
     [Header("Managers/Objects")]
     [SerializeField] private HandManager handManager;
-    [SerializeField] private RectTransform enemySlotPos;
     [SerializeField] private BattleManager battleManager;
+    [SerializeField] private RectTransform enemySlotPos;
+    [SerializeField] private GameObject cardRewardPanel;
+    [SerializeField] private CardRewardManager rewardManager;
 
     private void Start()
     {
@@ -25,8 +28,10 @@ public class StageManager : MonoBehaviour
 
     public void WinBattle()
     {
-        if(currentStage != numberOfStages)
+        rewardManager.GetRewardCards(3);
+        if (currentStage != numberOfStages)
         {
+            StartCoroutine(WaitForReward());
             currentStage++;
             playerDefense.RemoveAllArmor();
             battleManager.StartBattle();
@@ -38,6 +43,17 @@ public class StageManager : MonoBehaviour
             SceneManager.LoadScene("Game");
         }
     }
+    IEnumerator WaitForReward()
+    {
+        cardRewardPanel.SetActive(true);
+        rewardManager.SetCardsInteractable(true);
+
+        //ЖДЁМ, пока игрок выберет карту
+        yield return new WaitUntil(() => rewardManager.hasChosenCard);
+
+        cardRewardPanel.SetActive(false);
+    }
+
     public void StartStage()
     {
         InteractionState.isDraggingCard = false;
@@ -45,5 +61,6 @@ public class StageManager : MonoBehaviour
         enemy.transform.SetParent(enemySlotPos.transform, false);
         handManager.DrawHand();
     }
+
 
 }
