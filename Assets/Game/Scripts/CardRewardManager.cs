@@ -14,6 +14,7 @@ public class CardRewardManager : MonoBehaviour
 
     public void GetRewardCards(int count)
     {
+        SetCardsInteractable(true);
         cardsCount = count;
         for (int i = 0; i < count; i++)
         {
@@ -26,6 +27,7 @@ public class CardRewardManager : MonoBehaviour
     {
         for (int i = 0; i < cardsCount; i++)
         {
+            hasChosenCard = !state;
             CanvasGroup cg = cardTemplates[i].GetComponent<CanvasGroup>();
             cg.interactable = state;
             cg.blocksRaycasts = state;
@@ -34,7 +36,7 @@ public class CardRewardManager : MonoBehaviour
 
     public void ChooseCard(CardData card)
     {
-        SetCardsInteractable(false);
         deckManager.AddCard(card);
+        SetCardsInteractable(false);
     }
 }

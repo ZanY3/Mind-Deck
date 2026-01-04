@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageManager
   currentStage: 1
-  numberOfStages: 2
+  numberOfStages: 3
   playerDefense: {fileID: 1397727169}
   enemiesPrefabs:
   - {fileID: 3358877262367213177, guid: aff91e91c548dda43a288873f0b6f0c7, type: 3}
@@ -3556,6 +3556,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
   - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
   - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
+  deck: []
+  discardPile: []
 --- !u!1 &1739304504
 GameObject:
   m_ObjectHideFlags: 0

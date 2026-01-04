@@ -782,8 +782,8 @@ GameObject:
   - component: {fileID: 7772126111141592873}
   - component: {fileID: 8827605153682336578}
   - component: {fileID: 5831734461787348507}
-  - component: {fileID: 3344248719148607561}
   - component: {fileID: 8248900475958062805}
+  - component: {fileID: 3344248719148607561}
   m_Layer: 5
   m_Name: Card_Template
   m_TagString: Untagged
@@ -865,19 +865,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &3344248719148607561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8565312338920324948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c541dc5a7cfc6204984db230c2cfb59d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardDrag
-  droppedOnTarget: 0
 --- !u!114 &8248900475958062805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,15 +879,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardDisplay
   cardToDisplay: {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
   iconImg: {fileID: 1943172989603859805}
+  energyImg: {fileID: 675886458428066909}
   nameTxt: {fileID: 7748945854421170606}
   descriptionTxt: {fileID: 6579922600395119407}
   typeTxt: {fileID: 8964110673098709459}
   energyCostTxt: {fileID: 7813269329265740214}
-  energyImg: {fileID: 675886458428066909}
   body: {fileID: 2566359272111967688}
   attackCardColor: {r: 0.5568628, g: 0.28235295, b: 0.28235295, a: 1}
   defenseCardColor: {r: 0.28235295, g: 0.36075065, b: 0.5568628, a: 1}
   energyImgDarkerFactor: 0.6
+--- !u!114 &3344248719148607561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8565312338920324948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c541dc5a7cfc6204984db230c2cfb59d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardDrag
+  droppedOnTarget: 0
 --- !u!1 &8958904942587321123
 GameObject:
   m_ObjectHideFlags: 0

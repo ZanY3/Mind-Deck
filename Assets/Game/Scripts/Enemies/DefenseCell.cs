@@ -6,7 +6,7 @@ public class DefenseCell : MonoBehaviour, IDropHandler
 {
     [SerializeField] private int defenseAmout;
     [SerializeField] private int defensePerTurn;
-    [SerializeField] private bool gainsDefenseEveryTurn = false;
+    [SerializeField] private bool refreshDefenseEveryTurn = false;
     [SerializeField] private EnemyDropTarget dropTarget;
 
     [Space]
@@ -16,18 +16,20 @@ public class DefenseCell : MonoBehaviour, IDropHandler
     //[HideInInspector] public bool canAttackEnemy = false;
 
     private Enemy enemy;
+    private int startDefenseAmout;
 
     private void Start()
     {
         dropTarget.enabled = false;
         enemy = GetComponentInParent<Enemy>();
+        startDefenseAmout = defenseAmout;
         UpdateUI();
     }
     public void GainDefense()
     {
-        if(gainsDefenseEveryTurn)
+        if(refreshDefenseEveryTurn)
         {
-            defenseAmout += defensePerTurn;
+            defenseAmout = startDefenseAmout;
             UpdateUI();
         }
         else

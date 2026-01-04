@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class StageManager : MonoBehaviour
 {
     [SerializeField] private int currentStage = 1;
-    [SerializeField] private int numberOfStages = 5;
+    [SerializeField] private int numberOfStages;
     [SerializeField] private PlayerDefense playerDefense;
 
     [Space]
@@ -20,6 +20,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private RectTransform enemySlotPos;
     [SerializeField] private GameObject cardRewardPanel;
     [SerializeField] private CardRewardManager rewardManager;
+    [SerializeField] private DeckManager deckManager;
 
     private void Start()
     {
@@ -46,7 +47,6 @@ public class StageManager : MonoBehaviour
     IEnumerator WaitForReward()
     {
         cardRewardPanel.SetActive(true);
-        rewardManager.SetCardsInteractable(true);
 
         //ЖДЁМ, пока игрок выберет карту
         yield return new WaitUntil(() => rewardManager.hasChosenCard);

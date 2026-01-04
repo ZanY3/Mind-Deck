@@ -38,6 +38,7 @@ public class BattleManager : MonoBehaviour
         isPlayerTurn = true;
         endTurnBtn.SetActive(true);
         finalPanel.SetActive(false);
+        energyManager.RefillEnergy();
     }
     public void EndPlayerTurn() //When we press "End turn"
     {
@@ -72,7 +73,6 @@ public class BattleManager : MonoBehaviour
             finalPanel.SetActive(true);
             finalTxt.text = "Congratulations! You have cleared this round!";
         }
-        energyManager.RefillEnergy();
     }
     public void PlayerLose()
     {
@@ -91,7 +91,6 @@ public class BattleManager : MonoBehaviour
         endTurnBtn.SetActive(false);
         finalPanel.SetActive(true);
         finalTxt.text = "Oh no! You have lost this round!";
-        energyManager.RefillEnergy();
     }
 
     IEnumerator EnemyAttack()
