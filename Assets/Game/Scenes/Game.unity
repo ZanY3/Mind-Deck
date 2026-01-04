@@ -436,6 +436,7 @@ MonoBehaviour:
   enemySlotPos: {fileID: 443347405}
   cardRewardPanel: {fileID: 904458415}
   rewardManager: {fileID: 1174023037}
+  deckManager: {fileID: 0}
 --- !u!1 &154507790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,10 +2345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardRewardManager
   allCards:
-  - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
-  - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
-  - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
-  - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
+  - {fileID: 11400000, guid: 5cd46a33ff907af48bca4ae0fa9ac132, type: 2}
+  - {fileID: 11400000, guid: 52694d375e414874fa7f1399ab514bfd, type: 2}
+  - {fileID: 11400000, guid: 52694d375e414874fa7f1399ab514bfd, type: 2}
   cardTemplates:
   - {fileID: 2097190796}
   - {fileID: 1873815704}
@@ -3556,8 +3556,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
   - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
   - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
-  deck: []
-  discardPile: []
 --- !u!1 &1739304504
 GameObject:
   m_ObjectHideFlags: 0
