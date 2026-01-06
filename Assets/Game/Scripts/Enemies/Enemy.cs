@@ -45,13 +45,10 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(int value)
     {
-        if (currentHealth >= value)
-        {
-            currentHealth -= value;
-            UpdateUI();
-            //Some effects
-        }
-        if(currentHealth <= 0)
+        currentHealth -= value;
+        UpdateUI();
+        //Some effects
+        if (currentHealth <= 0)
         {
             battleManager.RemoveEnemy(this);
             battleManager.CheckPlayerWin();

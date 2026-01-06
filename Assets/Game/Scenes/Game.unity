@@ -222,9 +222,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congratulations! You have cleared this round!
+  m_text: VICTORY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bcdf8fbeda1d3d14c85a7fd19d7c430b, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -249,8 +249,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 84
+  m_fontSizeBase: 84
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_margin: {x: -409.15576, y: -601.3679, z: -418.09842, w: -512.2879}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &46173283
@@ -2346,8 +2346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardRewardManager
   allCards:
   - {fileID: 11400000, guid: 5cd46a33ff907af48bca4ae0fa9ac132, type: 2}
-  - {fileID: 11400000, guid: 52694d375e414874fa7f1399ab514bfd, type: 2}
-  - {fileID: 11400000, guid: 52694d375e414874fa7f1399ab514bfd, type: 2}
+  - {fileID: 11400000, guid: 8e88d1ef3e7c08e45bc98b314b5878f4, type: 2}
+  - {fileID: 11400000, guid: 8e88d1ef3e7c08e45bc98b314b5878f4, type: 2}
   cardTemplates:
   - {fileID: 2097190796}
   - {fileID: 1873815704}

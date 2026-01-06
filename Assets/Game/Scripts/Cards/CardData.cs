@@ -7,9 +7,16 @@ public class CardData : ScriptableObject
     public enum CardType
     {
         Attack,
-        Defence
+        Defence,
+        SkillOnPlayer
+    }
+    public enum Effect
+    {
+        Empty,
+        Cleansing
     }
     public CardType type;
+    public Effect effect;
     public Sprite icon;
     public string description;
     public int power; //like attack damage or defence value

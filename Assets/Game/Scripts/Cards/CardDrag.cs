@@ -55,7 +55,8 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (!droppedOnTarget || target == null ||
         (target.GetComponent<PlayerHealth>() != null && card.type == CardData.CardType.Attack) ||
-        (target.GetComponent<Enemy>() != null && card.type == CardData.CardType.Defence))
+        (target.GetComponent<Enemy>() != null && card.type == CardData.CardType.Defence) ||
+        (target.GetComponent<Enemy>() != null &&card.type == CardData.CardType.SkillOnPlayer))
         {
             rectTransform.anchoredPosition = startPosition;
         }

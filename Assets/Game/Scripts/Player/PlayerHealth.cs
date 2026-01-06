@@ -37,9 +37,14 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = 0;
             UpdateUI();
-            Debug.Log("PLAYER DIED!!!");
             battleManager.PlayerLose();//Fix bugs with UI and with enemy disable
         }
+    }
+    public void ClearAllDebuffs()
+    {
+        anxietyDamage = 0;
+        hasAnxiety = false;
+        UpdateUI();
     }
     public void UpdateUI()
     {

@@ -66,12 +66,11 @@ public class BattleManager : MonoBehaviour
             player.anxietyDamage = 0;
 
             player.UpdateUI();
-            Debug.LogWarning("Anxiety = false");
 
             handManager.ClearHand();
             endTurnBtn.SetActive(false);
             finalPanel.SetActive(true);
-            finalTxt.text = "Congratulations! You have cleared this round!";
+            finalTxt.text = "VICTORY";
         }
     }
     public void PlayerLose()
@@ -80,7 +79,6 @@ public class BattleManager : MonoBehaviour
         player.hasAnxiety = false;
         player.anxietyDamage = 0;
 
-        Debug.LogWarning("Anxiety = false");
         player.UpdateUI();
 
         for(int i = 0; i < enemies.Count; i++)
@@ -90,7 +88,7 @@ public class BattleManager : MonoBehaviour
         handManager.ClearHand();
         endTurnBtn.SetActive(false);
         finalPanel.SetActive(true);
-        finalTxt.text = "Oh no! You have lost this round!";
+        finalTxt.text = "DEFEAT";
     }
 
     IEnumerator EnemyAttack()

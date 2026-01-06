@@ -18,6 +18,7 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] private Image body;
     [SerializeField] private Color attackCardColor;
     [SerializeField] private Color defenseCardColor;
+    [SerializeField] private Color skillCardColor;
 
     [SerializeField][Range(0f, 1f)] private float energyImgDarkerFactor;
 
@@ -40,13 +41,17 @@ public class CardDisplay : MonoBehaviour
             body.color = defenseCardColor;
             energyImg.color = defenseCardColor;
         }
+        else if(cardToDisplay.type == CardData.CardType.SkillOnPlayer)
+        {
+            body.color = skillCardColor;
+            energyImg.color = skillCardColor;
+        }
         energyImg.color = Darken(energyImg.color, energyImgDarkerFactor);
 
         nameTxt.text = cardToDisplay.name;
         descriptionTxt.text = cardToDisplay.description;
         typeTxt.text = cardToDisplay.type.ToString();
         energyCostTxt.text = cardToDisplay.energyCost.ToString();
-
 
         iconImg.sprite = cardToDisplay.icon;
     }

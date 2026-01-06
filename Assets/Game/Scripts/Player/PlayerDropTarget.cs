@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,14 +13,21 @@ public class PlayerDropTarget : MonoBehaviour, IDropHandler
     {
         CardData card = eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay;
 
-        if (card.type != CardData.CardType.Defence)
+        if (card.type != CardData.CardType.Defence && card.type != CardData.CardType.SkillOnPlayer)
         {
             return;
         }
-        else
+        else if (card.type == CardData.CardType.Defence)
         {
             defense.AddArmor(card.power);
         }
-        eventData.pointerDrag.GetComponent<CardDrag>().droppedOnTarget = true;
+        else if (card.type == CardData.CardType.SkillOnPlayer)
+        {
+            if(eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay.effect == CardData.Effect.Cleansing)
+            {
+                eventData.pointerDrag.GetComponent<CardEffects>().RemoveAllDebuffs(GetComponent<PlayerHealth>());
+            }
+        }
+         eventData.pointerDrag.GetComponent<CardDrag>().droppedOnTarget = true;
     }
 }
