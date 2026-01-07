@@ -1,6 +1,7 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.GraphicsBuffer;
 
 public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -11,6 +12,10 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private CardDisplay cardDisplay;
     private EnergyManager energyManager;
 
+    //TESTING
+    private Vector3 startScale;
+    private Vector3 dragScale;
+
     [HideInInspector] public bool droppedOnTarget;
 
     private void Awake()
@@ -20,6 +25,9 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         canvas = GetComponentInParent<Canvas>();
         cardCanvas = GetComponent<Canvas>();
         energyManager = FindAnyObjectByType<EnergyManager>();
+
+        startScale = rectTransform.localScale;
+        dragScale = startScale * 0.75f;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -27,7 +35,11 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             eventData.pointerDrag = null;
             return;
+        
         }
+
+        rectTransform.localScale = dragScale; //TESTING
+
         InteractionState.isDraggingCard = true;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
         droppedOnTarget = false;
@@ -43,20 +55,39 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
+    public bool IsValidTarget(PointerEventData eventData)
+    {
+        GameObject target = eventData.pointerEnter;
+
+        if (target == null || !droppedOnTarget)
+            return false;
+
+        PlayerHealth player = target.GetComponent<PlayerHealth>();
+        Enemy enemy = target.GetComponent<Enemy>();
+        CardData card = cardDisplay.cardToDisplay;
+
+
+        if(player != null && card.type == CardData.CardType.Attack ||
+        (enemy != null && card.type == CardData.CardType.Defence)  ||
+        (enemy != null && card.type == CardData.CardType.SkillOnPlayer))
+        {
+            return false;
+        }
+        else
+            return true;
+    }
+
     public void OnEndDrag(PointerEventData eventData)
     {
+        rectTransform.localScale = startScale; //TESTING
+
         InteractionState.isDraggingCard = false;
         cardCanvas.overrideSorting = false;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         CardData card = cardDisplay.cardToDisplay;
 
-        GameObject target = eventData.pointerEnter;
-
-        if (!droppedOnTarget || target == null ||
-        (target.GetComponent<PlayerHealth>() != null && card.type == CardData.CardType.Attack) ||
-        (target.GetComponent<Enemy>() != null && card.type == CardData.CardType.Defence) ||
-        (target.GetComponent<Enemy>() != null &&card.type == CardData.CardType.SkillOnPlayer))
+        if (!IsValidTarget(eventData))
         {
             rectTransform.anchoredPosition = startPosition;
         }

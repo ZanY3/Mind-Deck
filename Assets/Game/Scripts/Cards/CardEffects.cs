@@ -1,5 +1,4 @@
 using UnityEngine;
-using static CardData;
 
 public class CardEffects : MonoBehaviour
 {

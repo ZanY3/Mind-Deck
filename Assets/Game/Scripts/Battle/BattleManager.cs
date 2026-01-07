@@ -106,14 +106,18 @@ public class BattleManager : MonoBehaviour
                 yield return new WaitForSeconds(1.5f);
             }
 
-            if (!player.hasAnxiety && enemies[i].Data.enemyType == EnemyData.EnemyType.Debuffer)
+            if(enemies[i].Data.enemyType == EnemyData.EnemyType.Debuffer)
             {
-                player.hasAnxiety = true;
+                if (!player.hasAnxiety && !enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied)
+                {
+                    enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied = true;
+                    player.hasAnxiety = true;
 
-                Debug.LogWarning("Anxiety = true");
-                player.UpdateUI();
+                    Debug.LogWarning("Anxiety = true");
+                    player.UpdateUI();
 
-                player.anxietyDamage = enemies[i].GetComponent<AnxietyDebuff>().AnxietyDamage;
+                    player.anxietyDamage = enemies[i].GetComponent<AnxietyDebuff>().AnxietyDamage;
+                }
             }
 
             enemies[i].AttackPlayer();

@@ -23,11 +23,11 @@ public class PlayerDropTarget : MonoBehaviour, IDropHandler
         }
         else if (card.type == CardData.CardType.SkillOnPlayer)
         {
-            if(eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay.effect == CardData.Effect.Cleansing)
+            if (eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay.effect == CardData.Effect.Cleansing)
             {
                 eventData.pointerDrag.GetComponent<CardEffects>().RemoveAllDebuffs(GetComponent<PlayerHealth>());
             }
         }
-         eventData.pointerDrag.GetComponent<CardDrag>().droppedOnTarget = true;
+        eventData.pointerDrag.GetComponent<CardDrag>().droppedOnTarget = true;
     }
 }
