@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,13 +14,20 @@ public class EnemyDropTarget : MonoBehaviour, IDropHandler
     {
         CardData card = eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay;
 
-        if(card.type != CardData.CardType.Attack)
+        if (card.type != CardData.CardType.Attack && card.type != CardData.CardType.SkillOnEnemy)
         {
             return;
         }
-        else
+        if(card.type == CardData.CardType.Attack)
         {
             enemy.TakeDamage(card.power);
+        }
+        else if(card.type == CardData.CardType.SkillOnEnemy)
+        {
+            if(card.effect == CardData.Effect.Stun)
+            {
+                eventData.pointerDrag.GetComponent<CardEffects>().Stun(enemy);
+            }
         }
         eventData.pointerDrag.GetComponent<CardDrag>().droppedOnTarget = true;
     }

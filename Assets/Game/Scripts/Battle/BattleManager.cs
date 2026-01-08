@@ -120,10 +120,19 @@ public class BattleManager : MonoBehaviour
                 }
             }
 
+            if (enemies[i].stunned)
+            {
+                enemies[i].stunTurnsLeft--;
+                if (enemies[i].stunTurnsLeft <= 0)
+                {
+                    enemies[i].GetComponent<EnemyToolTip>().UpdateStunToolTip(false);
+                    enemies[i].stunned = false;
+                }
+                continue;
+            }
             enemies[i].AttackPlayer();
             //Some animations for enemy attack
             yield return new WaitForSeconds(1.5f);
-
         }
         isPlayerTurn = true;
         endTurnBtn.SetActive(true);

@@ -10,6 +10,7 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
     [Space]
     [Header("UI/Tooltip")]
     [SerializeField] private GameObject tooltip;
+    [SerializeField] private GameObject stunTooltip;
     [SerializeField] private Image iconImg;
     [SerializeField] private TMP_Text nameTxt;
     [SerializeField] private TMP_Text descriptionTxt;
@@ -27,6 +28,18 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
         descriptionTxt.text = enemyData.description;
         typeTxt.text = enemyData.enemyType.ToString();
         iconImg.sprite = enemyData.artwork;
+    }
+    public void UpdateStunToolTip(bool state)
+    {
+        stunTooltip.SetActive(state);
+        if(state)
+        {
+            iconImg.color = new Color32(216, 196, 255, 255); // #D8C4FF
+        }
+        else
+        {
+            iconImg.color = Color.white;
+        }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

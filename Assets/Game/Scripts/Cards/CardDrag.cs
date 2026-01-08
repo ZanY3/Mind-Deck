@@ -69,7 +69,8 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if(player != null && card.type == CardData.CardType.Attack ||
         (enemy != null && card.type == CardData.CardType.Defence)  ||
-        (enemy != null && card.type == CardData.CardType.SkillOnPlayer))
+        (enemy != null && card.type == CardData.CardType.SkillOnPlayer) ||
+        (player != null && card.type == CardData.CardType.SkillOnEnemy))
         {
             return false;
         }

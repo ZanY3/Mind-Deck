@@ -41,7 +41,7 @@ public class CardDisplay : MonoBehaviour
             body.color = defenseCardColor;
             energyImg.color = defenseCardColor;
         }
-        else if(cardToDisplay.type == CardData.CardType.SkillOnPlayer)
+        else if(cardToDisplay.type == CardData.CardType.SkillOnPlayer || cardToDisplay.type == CardData.CardType.SkillOnEnemy)
         {
             body.color = skillCardColor;
             energyImg.color = skillCardColor;

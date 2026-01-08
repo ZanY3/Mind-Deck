@@ -8,12 +8,14 @@ public class CardData : ScriptableObject
     {
         Attack,
         Defence,
-        SkillOnPlayer
+        SkillOnPlayer,
+        SkillOnEnemy
     }
     public enum Effect
     {
         Empty,
-        Cleansing
+        Cleansing,
+        Stun
     }
     public CardType type;
     public Effect effect;

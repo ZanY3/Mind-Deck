@@ -428,15 +428,15 @@ MonoBehaviour:
   numberOfStages: 3
   playerDefense: {fileID: 1397727169}
   enemiesPrefabs:
-  - {fileID: 3358877262367213177, guid: aff91e91c548dda43a288873f0b6f0c7, type: 3}
-  - {fileID: 3776820825309561619, guid: 6105fd8eaea536e4cb1ed9d0eed4e0c5, type: 3}
+  - {fileID: 1816550486874978644, guid: 3e5612a69dbe1db409e449d66960bf85, type: 3}
+  - {fileID: 5978665549588100378, guid: 7912c995c27fab54f8211a1a1ceaea80, type: 3}
   - {fileID: 1816550486874978644, guid: 8ced0f3320ef22b4c8a86ab2cd92a0a8, type: 3}
   handManager: {fileID: 461268574}
   battleManager: {fileID: 495381521}
   enemySlotPos: {fileID: 443347405}
   cardRewardPanel: {fileID: 904458415}
   rewardManager: {fileID: 1174023037}
-  deckManager: {fileID: 0}
+  deckManager: {fileID: 1702557157}
 --- !u!1 &154507790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,8 +2346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardRewardManager
   allCards:
   - {fileID: 11400000, guid: 5cd46a33ff907af48bca4ae0fa9ac132, type: 2}
-  - {fileID: 11400000, guid: 8e88d1ef3e7c08e45bc98b314b5878f4, type: 2}
-  - {fileID: 11400000, guid: 8e88d1ef3e7c08e45bc98b314b5878f4, type: 2}
+  - {fileID: 11400000, guid: 5e1b4f7c7f6e5a44483c27bc4d6a08d3, type: 2}
+  - {fileID: 11400000, guid: 5e1b4f7c7f6e5a44483c27bc4d6a08d3, type: 2}
   cardTemplates:
   - {fileID: 2097190796}
   - {fileID: 1873815704}

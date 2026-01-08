@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,11 +12,14 @@ public class Enemy : MonoBehaviour
     [Header("Not required")]
     [SerializeField] private TMP_Text debuffDamageTxt;
 
+    [HideInInspector] public bool stunned = false;
+
     private PlayerHealth player;
 
     private int currentHealth;
     private int damage;
     private BattleManager battleManager;
+    [HideInInspector] public int stunTurnsLeft = 0;
 
     public EnemyData Data => enemyData;
 
@@ -54,6 +58,11 @@ public class Enemy : MonoBehaviour
             battleManager.CheckPlayerWin();
             Destroy(gameObject);
         }
+    }
+    public void ApplyStun(int turns)
+    {
+        GetComponent<EnemyToolTip>().UpdateStunToolTip(true);
+        stunned = true;
     }
     public void AttackPlayer()
     {

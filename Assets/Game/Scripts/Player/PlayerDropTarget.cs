@@ -23,9 +23,14 @@ public class PlayerDropTarget : MonoBehaviour, IDropHandler
         }
         else if (card.type == CardData.CardType.SkillOnPlayer)
         {
-            if (eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay.effect == CardData.Effect.Cleansing)
+            if (eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay.effect == CardData.Effect.Cleansing && GetComponent<PlayerHealth>().hasAnxiety)
             {
                 eventData.pointerDrag.GetComponent<CardEffects>().RemoveAllDebuffs(GetComponent<PlayerHealth>());
+            }
+            else
+            {
+                Debug.Log("Player don't have debuffs to clean");
+                return;
             }
         }
         eventData.pointerDrag.GetComponent<CardDrag>().droppedOnTarget = true;
