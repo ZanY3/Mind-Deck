@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   type: 3
   effect: 2
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 3156634924717718424, guid: c2f3a2e287be1af428ba26c49f2315eb, type: 3}
   description: Stun an enemy on 1 turn.
   power: 0
   energyCost: 1
