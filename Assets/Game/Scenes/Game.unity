@@ -428,7 +428,7 @@ MonoBehaviour:
   numberOfStages: 3
   playerDefense: {fileID: 1397727169}
   enemiesPrefabs:
-  - {fileID: 1816550486874978644, guid: 3e5612a69dbe1db409e449d66960bf85, type: 3}
+  - {fileID: 5978665549588100378, guid: 82956c3c6cc5fd04ca3949cfc1c7bd14, type: 3}
   - {fileID: 5978665549588100378, guid: 7912c995c27fab54f8211a1a1ceaea80, type: 3}
   - {fileID: 1816550486874978644, guid: 8ced0f3320ef22b4c8a86ab2cd92a0a8, type: 3}
   handManager: {fileID: 461268574}
