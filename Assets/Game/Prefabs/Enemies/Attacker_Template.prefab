@@ -390,7 +390,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2717010628445642510}
   - component: {fileID: 6597536080820051552}
-  - component: {fileID: 4123978997420664778}
   - component: {fileID: 3308693822043084406}
   m_Layer: 5
   m_Name: Attacker_Template
@@ -442,25 +441,6 @@ MonoBehaviour:
   debuffDamageTxt: {fileID: 0}
   stunned: 0
   stunTurnsLeft: 0
---- !u!114 &4123978997420664778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816550486874978644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b067aace4d0bb9e41b9295094682445a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyUI
-  enemyData: {fileID: 11400000, guid: afa52cee35a8dbf41963349d2ce5e7ed, type: 2}
-  tooltip: {fileID: 203799437581049679}
-  stunTooltip: {fileID: 340359620253780886}
-  iconImg: {fileID: 7187886962225268642}
-  nameTxt: {fileID: 2482734125536976345}
-  descriptionTxt: {fileID: 5317813464043943778}
-  typeTxt: {fileID: 2592859273104497301}
 --- !u!114 &3308693822043084406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  m_Color: {r: 0.5372549, g: 0.32156864, b: 0.32381964, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1528,6 +1508,7 @@ GameObject:
   - component: {fileID: 8743074604898676172}
   - component: {fileID: 1634541477203897964}
   - component: {fileID: 7187886962225268642}
+  - component: {fileID: 5258988495765710818}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -1551,7 +1532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -3.5}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1634541477203897964
@@ -1592,3 +1573,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5258988495765710818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8896040919002820068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b067aace4d0bb9e41b9295094682445a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyUI
+  enemyData: {fileID: 11400000, guid: afa52cee35a8dbf41963349d2ce5e7ed, type: 2}
+  tooltip: {fileID: 203799437581049679}
+  stunTooltip: {fileID: 340359620253780886}
+  iconImg: {fileID: 7187886962225268642}
+  nameTxt: {fileID: 2482734125536976345}
+  descriptionTxt: {fileID: 5317813464043943778}
+  typeTxt: {fileID: 2592859273104497301}

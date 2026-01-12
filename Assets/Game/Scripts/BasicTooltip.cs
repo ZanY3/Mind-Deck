@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BasicTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameObject tooltip;
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!InteractionState.isDraggingCard)

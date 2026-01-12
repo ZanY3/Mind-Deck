@@ -16,6 +16,9 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
     [SerializeField] private TMP_Text descriptionTxt;
     [SerializeField] private TMP_Text typeTxt;
 
+    [Space]
+    [Header("Not required")]
+    [SerializeField] private GameObject stunnerClue;
 
     private void Start()
     {
@@ -40,6 +43,10 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
         {
             iconImg.color = Color.white;
         }
+    }
+    public void UpdateStunClue(bool state)
+    {
+        stunnerClue.SetActive(state);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

@@ -108,16 +108,39 @@ public class BattleManager : MonoBehaviour
 
             if(enemies[i].Data.enemyType == EnemyData.EnemyType.Debuffer)
             {
-                if (!player.hasAnxiety && !enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied)
+                if (enemies[i].GetComponent<AnxietyDebuff>() != null)
                 {
-                    enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied = true;
-                    player.hasAnxiety = true;
+                    if (!player.hasAnxiety && !enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied)
+                    {
+                        enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied = true;
+                        player.hasAnxiety = true;
 
-                    Debug.LogWarning("Anxiety = true");
-                    player.UpdateUI();
+                        Debug.LogWarning("Anxiety = true");
+                        player.UpdateUI();
 
-                    player.anxietyDamage = enemies[i].GetComponent<AnxietyDebuff>().AnxietyDamage;
+                        player.anxietyDamage = enemies[i].GetComponent<AnxietyDebuff>().AnxietyDamage;
+                    }
                 }
+                if (enemies[i].GetComponent<StunDebuff>() != null)
+                {
+                    StunDebuff enemyStun = enemies[i].GetComponent<StunDebuff>();
+                    EnemyToolTip enemyToolTip = enemies[i].GetComponentInChildren<EnemyToolTip>();
+
+                    if(enemyStun.turnsUntilStun > 0)
+                    {
+                        enemyStun.turnsUntilStun--;
+                    }
+                    if (enemyStun.turnsUntilStun <= 0)
+                    {
+                        enemyStun.DealStun();
+
+                        enemyToolTip.UpdateStunClue(false);
+                    }
+                    if (enemyStun.turnsUntilStun == 1)
+                    {
+                        enemyToolTip.UpdateStunClue(true);
+                    }
+                 }
             }
 
             if (enemies[i].stunned)
@@ -125,7 +148,7 @@ public class BattleManager : MonoBehaviour
                 enemies[i].stunTurnsLeft--;
                 if (enemies[i].stunTurnsLeft <= 0)
                 {
-                    enemies[i].GetComponent<EnemyToolTip>().UpdateStunToolTip(false);
+                    enemies[i].GetComponentInChildren<EnemyToolTip>().UpdateStunToolTip(false);
                     enemies[i].stunned = false;
                 }
                 continue;
@@ -134,8 +157,26 @@ public class BattleManager : MonoBehaviour
             //Some animations for enemy attack
             yield return new WaitForSeconds(1.5f);
         }
-        isPlayerTurn = true;
-        endTurnBtn.SetActive(true);
-        handManager.DrawHand();
+        if (player.stunned == false)
+        {
+            player.ChangeStunClueState(false);
+            isPlayerTurn = true;
+            endTurnBtn.SetActive(true);
+            handManager.DrawHand();
+        }
+        else if (player.stunned == true)
+        {
+            EndPlayerTurn();
+            player.ChangeStunClueState(true);
+            if (player.turnsUntilStunRemove <= 0)
+            {
+                player.ChangeStunState(false);
+            }
+            else
+            {
+                player.turnsUntilStunRemove--;
+            }
+        }
+
     }
 }

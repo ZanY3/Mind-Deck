@@ -59,9 +59,9 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void ApplyStun(int turns)
+    public void ApplyStun()
     {
-        GetComponent<EnemyToolTip>().UpdateStunToolTip(true);
+        GetComponentInChildren<EnemyToolTip>().UpdateStunToolTip(true);
         stunned = true;
     }
     public void AttackPlayer()

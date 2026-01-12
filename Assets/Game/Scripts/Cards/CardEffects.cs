@@ -12,7 +12,7 @@ public class CardEffects : MonoBehaviour
 //--------------Effects on enemy---------------------------
     public void Stun(Enemy enemy)
     {
-        enemy.ApplyStun(1);
+        enemy.ApplyStun();
         Debug.Log("Enemy stunned!");
     }
 }

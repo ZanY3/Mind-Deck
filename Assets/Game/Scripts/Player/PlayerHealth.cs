@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
     [SerializeField] private BattleManager battleManager;
+
+    [SerializeField] private int maxHealth;
 
     private int currentHealth;
     private PlayerDefense defense;
@@ -13,12 +14,18 @@ public class PlayerHealth : MonoBehaviour
     [HideInInspector] public bool hasAnxiety = false;
     [HideInInspector] public int anxietyDamage = 0;
 
+    [HideInInspector] public bool stunned = false;
+
     [Space]
     [Header("UI/HealthBar")]
 
-    [SerializeField] private GameObject debuffImage;
+    [SerializeField] private GameObject stunClue;
+    [SerializeField] private GameObject anxietyDebuffImg;
+    [SerializeField] private GameObject stunDebuffImg;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private TMP_Text healthTxt;
+
+    [HideInInspector] public int turnsUntilStunRemove = 0;
 
     private void Start()
     {
@@ -40,20 +47,38 @@ public class PlayerHealth : MonoBehaviour
             battleManager.PlayerLose();//Fix bugs with UI and with enemy disable
         }
     }
+    public void ChangeStunState(bool state)
+    {
+        stunned = state;
+        stunDebuffImg.SetActive(state);
+        UpdateUI();
+    }
+    public void ChangeStunClueState(bool state)
+    {
+        stunClue.SetActive(state);
+    }
     public void ClearAllDebuffs()
     {
         anxietyDamage = 0;
         hasAnxiety = false;
+        turnsUntilStunRemove = 0;
+        ChangeStunState(false);
         UpdateUI();
     }
     public void UpdateUI()
     {
         if(healthTxt != null && healthBarImage != null)
         {
-            debuffImage.SetActive(hasAnxiety);
-            if(hasAnxiety)
+            anxietyDebuffImg.SetActive(hasAnxiety);
+            stunDebuffImg.SetActive(stunned);
+
+            if(hasAnxiety && !stunned)
             {
                 GetComponent<Image>().color = new Color32(224, 255, 194, 255); //#E0FFC2
+            }
+            else if(stunned)
+            {
+                GetComponent<Image>().color = new Color32(206, 126, 255, 255); //#CE7EFF
             }
             else
             {

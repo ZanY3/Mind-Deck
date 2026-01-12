@@ -307,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -96.7, y: 35.199997}
+  m_AnchoredPosition: {x: -96.7, y: 35.200195}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3483248552513921807
@@ -519,7 +519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 4.2, y: 35.399994}
+  m_AnchoredPosition: {x: 4.2, y: 35.40039}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6818765073955301816
@@ -920,6 +920,7 @@ GameObject:
   - component: {fileID: 3628126872072519396}
   - component: {fileID: 5939442887151200414}
   - component: {fileID: 2587610308669491738}
+  - component: {fileID: 1923684985471736614}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -943,8 +944,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -6}
-  m_SizeDelta: {x: 180, y: 240}
+  m_AnchoredPosition: {x: 0, y: -11.4}
+  m_SizeDelta: {x: 180, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5939442887151200414
 CanvasRenderer:
@@ -984,6 +985,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1923684985471736614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458083465064408233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b067aace4d0bb9e41b9295094682445a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyUI
+  enemyData: {fileID: 11400000, guid: 1029066ab8368e248997c29efe96c078, type: 2}
+  tooltip: {fileID: 6272876593912830296}
+  stunTooltip: {fileID: 5983138277788155123}
+  iconImg: {fileID: 2587610308669491738}
+  nameTxt: {fileID: 4807745654664355943}
+  descriptionTxt: {fileID: 8108810243098680750}
+  typeTxt: {fileID: 1827288480086747024}
+  stunnerClue: {fileID: 5996131607652451639}
 --- !u!1 &5978665549588100378
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +1015,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1795436690325237886}
   - component: {fileID: 3316257323770756616}
-  - component: {fileID: 8818856385553418778}
   - component: {fileID: 661293709851838707}
   - component: {fileID: 230722369017193006}
   m_Layer: 5
@@ -1048,25 +1068,6 @@ MonoBehaviour:
   debuffDamageTxt: {fileID: 0}
   stunned: 0
   stunTurnsLeft: 0
---- !u!114 &8818856385553418778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5978665549588100378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b067aace4d0bb9e41b9295094682445a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyUI
-  enemyData: {fileID: 11400000, guid: 1029066ab8368e248997c29efe96c078, type: 2}
-  tooltip: {fileID: 6272876593912830296}
-  stunTooltip: {fileID: 5983138277788155123}
-  iconImg: {fileID: 2587610308669491738}
-  nameTxt: {fileID: 4807745654664355943}
-  descriptionTxt: {fileID: 8108810243098680750}
-  typeTxt: {fileID: 1827288480086747024}
 --- !u!114 &661293709851838707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,6 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899240713c59e3644860055fe1a22095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StunDebuff
+  turnsUntilStun: 2
 --- !u!1 &5983138277788155123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,12 +1196,12 @@ GameObject:
   - component: {fileID: 5589658313208637569}
   - component: {fileID: 1208947686849830024}
   m_Layer: 5
-  m_Name: EnemyStunClue
+  m_Name: StunnerClue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9136467641821229301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1217,7 +1219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 83.5, y: 35.399994}
+  m_AnchoredPosition: {x: 83.5, y: 35.40039}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2523265293581204800
@@ -1868,7 +1870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -107.1}
+  m_AnchoredPosition: {x: 0, y: -107.1001}
   m_SizeDelta: {x: 250, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &996233791744676217
@@ -1892,7 +1894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.66394717, g: 0.5019608, b: 0.7529412, a: 1}
+  m_Color: {r: 0.45162052, g: 0.32156864, b: 0.5372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
