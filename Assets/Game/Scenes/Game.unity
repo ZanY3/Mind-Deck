@@ -425,12 +425,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageManager
   currentStage: 1
-  numberOfStages: 3
+  numberOfStages: 7
   playerDefense: {fileID: 1397727169}
   enemiesPrefabs:
-  - {fileID: 5978665549588100378, guid: 82956c3c6cc5fd04ca3949cfc1c7bd14, type: 3}
-  - {fileID: 5978665549588100378, guid: 7912c995c27fab54f8211a1a1ceaea80, type: 3}
-  - {fileID: 1816550486874978644, guid: 8ced0f3320ef22b4c8a86ab2cd92a0a8, type: 3}
+  - {fileID: 1816550486874978644, guid: 7faffba7115f81f4a9bd2173b03dfe20, type: 3}
+  - {fileID: 919055057233421266, guid: 04a359a47af678742a1fdc855ed98691, type: 3}
+  - {fileID: 5978665549588100378, guid: f49653eceae247343b971868c3e648f0, type: 3}
+  - {fileID: 2601725641773459835, guid: 426b59197cbf67a4ba6b04e9575b4be0, type: 3}
+  - {fileID: 1816550486874978644, guid: 4f7295688e6025f4386f60212f751ace, type: 3}
+  - {fileID: 3576302214709595720, guid: a4ced8783cf488841ac3e6b27ba3464a, type: 3}
+  - {fileID: 296436791887354713, guid: ffb69bf477882604fbc279c863f959d5, type: 3}
   handManager: {fileID: 461268574}
   battleManager: {fileID: 495381521}
   enemySlotPos: {fileID: 443347405}
