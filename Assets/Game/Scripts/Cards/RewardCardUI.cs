@@ -14,6 +14,7 @@ public class RewardCardUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
         rectTransform = GetComponent<RectTransform>();
         startScale = rectTransform.localScale;
     }
+//--------------------------------------------------------------------------------------
     public void OnPointerClick(PointerEventData eventData)
     {
         rewardManager.hasChosenCard = true;

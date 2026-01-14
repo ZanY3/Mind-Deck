@@ -12,6 +12,7 @@ public class EnergyManager : MonoBehaviour
         currentEnergy = maxEnergyValue;
         UpdateUI();
     }
+//-----------------------------------------------------------------------------------------
     public void UpdateUI()
     {
         energyTxt.text = currentEnergy.ToString() + "/" + maxEnergyValue.ToString();

@@ -29,6 +29,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         startScale = rectTransform.localScale;
         dragScale = startScale * 0.75f;
     }
+//--------------------------------------------------------------------------------------
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!energyManager.CheckIsEnoughOnCard(cardDisplay.cardToDisplay.energyCost))

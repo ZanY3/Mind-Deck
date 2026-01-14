@@ -26,7 +26,7 @@ public class StageManager : MonoBehaviour
     {
         StartStage();
     }
-
+//---------------------------------------------------------------
     public void WinBattle()
     {
         rewardManager.GetRewardCards(3);
@@ -48,7 +48,7 @@ public class StageManager : MonoBehaviour
     {
         cardRewardPanel.SetActive(true);
 
-        //ЖДЁМ, пока игрок выберет карту
+        //waiting until player will pick a card
         yield return new WaitUntil(() => rewardManager.hasChosenCard);
 
         cardRewardPanel.SetActive(false);

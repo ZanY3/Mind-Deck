@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 
 public class BattleManager : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class BattleManager : MonoBehaviour
     {
         enemies = new List<Enemy>();
     }
-
+//-------------------------------------------
     public void AddEnemy(Enemy enemy)
     {
         enemies.Add(enemy);
@@ -101,7 +100,7 @@ public class BattleManager : MonoBehaviour
         {
             if (enemies[i].Data.enemyType == EnemyData.EnemyType.Defender && enemies[i].GetComponentInChildren<DefenseCell>() != null)
             {
-                enemies[i].GetComponentInChildren<DefenseCell>().GainDefense();
+                enemies[i].GetComponentInChildren<DefenseCell>().RefillDefense();
                 //Some animations for enemy attack
                 yield return new WaitForSeconds(1.5f);
             }
@@ -177,6 +176,5 @@ public class BattleManager : MonoBehaviour
                 player.turnsUntilStunRemove--;
             }
         }
-
     }
 }

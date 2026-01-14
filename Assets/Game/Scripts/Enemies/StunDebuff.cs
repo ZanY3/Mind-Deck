@@ -9,7 +9,6 @@ public class StunDebuff : MonoBehaviour
     {
         startTurnsUntilStun = turnsUntilStun;
     }
-
     public void DealStun()
     {
         FindAnyObjectByType<PlayerHealth>().ChangeStunState(true);

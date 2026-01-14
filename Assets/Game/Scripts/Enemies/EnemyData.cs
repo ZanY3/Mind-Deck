@@ -15,6 +15,7 @@ public class EnemyData : ScriptableObject
         Debuffer,
         Defender
     }
+
     public EnemyType enemyType;
 
     //Attacker - just deals fixed amout of damage every turn COLORS: WHITE AND RED(MB)

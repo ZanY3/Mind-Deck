@@ -18,7 +18,7 @@ public class DeckManager : MonoBehaviour
     {
         Shuffle(deck);
     }
-
+  //--------------------------------------------------------------------------------------
     public void Shuffle(List<CardData> deck)
     {
         for (int i = 0; i < deck.Count; i++)

@@ -24,7 +24,7 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
     {
         FillUI();
     }
-
+//--------------------------------------------------------------------------------------
     public void FillUI()
     {
         nameTxt.text = enemyData.name;

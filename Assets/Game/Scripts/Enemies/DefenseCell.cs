@@ -25,16 +25,13 @@ public class DefenseCell : MonoBehaviour, IDropHandler
         startDefenseAmout = defenseAmout;
         UpdateUI();
     }
-    public void GainDefense()
+//--------------------------------------------------------------------------------------
+    public void RefillDefense()
     {
         if(refreshDefenseEveryTurn)
         {
             defenseAmout = startDefenseAmout;
             UpdateUI();
-        }
-        else
-        {
-            Debug.LogWarning(enemy.name + "isn't gaining defense per turn");
         }
     }
     public void DecreaseDefense(int value)

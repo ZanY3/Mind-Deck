@@ -17,6 +17,7 @@ public class CardData : ScriptableObject
         Cleansing,
         Stun
     }
+
     public CardType type;
     public Effect effect;
     public Sprite icon;

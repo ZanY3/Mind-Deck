@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -33,6 +32,7 @@ public class Enemy : MonoBehaviour
         ReadData();
         UpdateUI();
     }
+//---------------------------------------------------------------------------------------------
     public void ReadData()
     {
         currentHealth = enemyData.health;

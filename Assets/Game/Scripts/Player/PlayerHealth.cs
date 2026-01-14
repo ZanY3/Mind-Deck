@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         UpdateUI();
     }
+//--------------------------------------------------------------------------------------
     public void TakeDamage(int damage)
     {
         if(currentHealth > 0)

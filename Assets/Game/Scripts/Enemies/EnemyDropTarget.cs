@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,6 +9,7 @@ public class EnemyDropTarget : MonoBehaviour, IDropHandler
     {
         enemy = GetComponent<Enemy>();
     }
+//--------------------------------------------------------------------------------------
     public void OnDrop(PointerEventData eventData) //OnCardDrop
     {
         CardData card = eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay;
