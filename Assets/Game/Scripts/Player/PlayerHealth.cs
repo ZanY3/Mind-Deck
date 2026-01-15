@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject stunClue;
     [SerializeField] private GameObject anxietyDebuffImg;
     [SerializeField] private GameObject stunDebuffImg;
+    [SerializeField] private GameObject cardDraggingImg;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private TMP_Text healthTxt;
 
@@ -57,6 +58,10 @@ public class PlayerHealth : MonoBehaviour
     public void ChangeStunClueState(bool state)
     {
         stunClue.SetActive(state);
+    }
+    public void ChangeDraggingClueState(bool state)
+    {
+        cardDraggingImg.SetActive(state);
     }
     public void ClearAllDebuffs()
     {

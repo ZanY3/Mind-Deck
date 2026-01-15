@@ -17,7 +17,7 @@ public class BattleManager : MonoBehaviour
 
     [HideInInspector] public bool isPlayerTurn = true;
 
-    private List<Enemy> enemies;
+    [HideInInspector] public List<Enemy> enemies;
 
     private void Awake()
     {

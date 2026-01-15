@@ -10,6 +10,7 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
     [Space]
     [Header("UI/Tooltip")]
     [SerializeField] private GameObject tooltip;
+    [SerializeField] private GameObject cardDragTooltip;
     [SerializeField] private GameObject stunTooltip;
     [SerializeField] private Image iconImg;
     [SerializeField] private TMP_Text nameTxt;
@@ -43,6 +44,10 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
         {
             iconImg.color = Color.white;
         }
+    }
+    public void UpdateDragTooltip(bool state)
+    {
+        cardDragTooltip.SetActive(state);
     }
     public void UpdateStunClue(bool state)
     {

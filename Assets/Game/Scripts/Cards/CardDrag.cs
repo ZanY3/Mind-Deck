@@ -11,6 +11,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Canvas cardCanvas;
     private CardDisplay cardDisplay;
     private EnergyManager energyManager;
+    private CardDraggingManager draggingManager;
 
     //TESTING
     private Vector3 startScale;
@@ -25,9 +26,10 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         canvas = GetComponentInParent<Canvas>();
         cardCanvas = GetComponent<Canvas>();
         energyManager = FindAnyObjectByType<EnergyManager>();
+        draggingManager = FindAnyObjectByType<CardDraggingManager>();
 
         startScale = rectTransform.localScale;
-        dragScale = startScale * 0.75f;
+        dragScale = startScale * 0.8f;
     }
 //--------------------------------------------------------------------------------------
     public void OnBeginDrag(PointerEventData eventData)
@@ -38,6 +40,16 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             return;
         
         }
+
+        CardData.CardType type = cardDisplay.cardToDisplay.type;
+        if (type == CardData.CardType.Attack || type == CardData.CardType.SkillOnEnemy)
+        {
+            draggingManager.SetEnemiesTooltipState(true);
+        }
+        if(type == CardData.CardType.Defence || type == CardData.CardType.SkillOnPlayer)
+        {
+            draggingManager.SetPlayerTooltipState(true);
+        }    
 
         rectTransform.localScale = dragScale; //TESTING
 
@@ -88,6 +100,16 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         CardData card = cardDisplay.cardToDisplay;
+
+        CardData.CardType type = cardDisplay.cardToDisplay.type;
+        if (type == CardData.CardType.Attack || type == CardData.CardType.SkillOnEnemy)
+        {
+            draggingManager.SetEnemiesTooltipState(false);
+        }
+        if (type == CardData.CardType.Defence || type == CardData.CardType.SkillOnPlayer)
+        {
+            draggingManager.SetPlayerTooltipState(false);
+        }
 
         if (!IsValidTarget(eventData))
         {
