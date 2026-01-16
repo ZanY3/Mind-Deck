@@ -68,28 +68,6 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
-    public bool IsValidTarget(PointerEventData eventData)
-    {
-        GameObject target = eventData.pointerEnter;
-
-        if (target == null || !droppedOnTarget)
-            return false;
-
-        PlayerHealth player = target.GetComponent<PlayerHealth>();
-        Enemy enemy = target.GetComponent<Enemy>();
-        CardData card = cardDisplay.cardToDisplay;
-
-
-        if(player != null && card.type == CardData.CardType.Attack ||
-        (enemy != null && card.type == CardData.CardType.Defence)  ||
-        (enemy != null && card.type == CardData.CardType.SkillOnPlayer) ||
-        (player != null && card.type == CardData.CardType.SkillOnEnemy))
-        {
-            return false;
-        }
-        else
-            return true;
-    }
 
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -111,7 +89,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             draggingManager.SetPlayerTooltipState(false);
         }
 
-        if (!IsValidTarget(eventData))
+        if (IsValidTarget(eventData) == false)
         {
             rectTransform.anchoredPosition = startPosition;
         }
@@ -119,6 +97,32 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             energyManager.DecreaseEnergy(card.energyCost);
             Destroy(gameObject);
+        }
+    }
+    public bool IsValidTarget(PointerEventData eventData)
+    {
+        GameObject target = eventData.pointerEnter;
+
+        if (target == null || !droppedOnTarget)
+            return false;
+
+        PlayerHealth playerOnTarget = target.GetComponent<PlayerHealth>();
+        Enemy enemyOnTarget = target.GetComponent<Enemy>();
+        CardData card = cardDisplay.cardToDisplay;
+
+
+        if (
+        (playerOnTarget != null && card.type == CardData.CardType.Attack) ||
+        (enemyOnTarget != null && card.type == CardData.CardType.Defence) ||
+        (enemyOnTarget != null && card.type == CardData.CardType.SkillOnPlayer) ||
+        (playerOnTarget != null && card.type == CardData.CardType.SkillOnEnemy))
+        //(enemyOnTarget != null && card.effect == CardData.Effect.Stun && enemyOnTarget.stunned)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }

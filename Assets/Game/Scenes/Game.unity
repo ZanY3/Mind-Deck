@@ -1819,7 +1819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -878.1, y: 428.6}
+  m_AnchoredPosition: {x: -856.2, y: 414.7}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620894624
@@ -2716,8 +2716,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: YOU ARE STUNNED!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bcdf8fbeda1d3d14c85a7fd19d7c430b, type: 2}
+  m_sharedMaterial: {fileID: -1026610306130387790, guid: bcdf8fbeda1d3d14c85a7fd19d7c430b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3428,7 +3428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2006622299912519514, guid: 275475c784ece124a804f883811d041f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 110
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 2006622299912519514, guid: 275475c784ece124a804f883811d041f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

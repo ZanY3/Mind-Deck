@@ -98,7 +98,7 @@ public class BattleManager : MonoBehaviour
         }
         for (int i = 0; i < enemies.Count; i++) // All enemies attack in turn
         {
-            if (enemies[i].Data.enemyType == EnemyData.EnemyType.Defender && enemies[i].GetComponentInChildren<DefenseCell>() != null)
+            if (enemies[i].Data.enemyType == EnemyData.EnemyType.Defender && enemies[i].GetComponentInChildren<DefenseCell>() != null && enemies[i].stunned == false)
             {
                 enemies[i].GetComponentInChildren<DefenseCell>().RefillDefense();
                 //Some animations for enemy attack
@@ -109,7 +109,7 @@ public class BattleManager : MonoBehaviour
             {
                 if (enemies[i].GetComponent<AnxietyDebuff>() != null)
                 {
-                    if (!player.hasAnxiety && !enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied)
+                    if (!player.hasAnxiety && !enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied && enemies[i].stunned == false)
                     {
                         enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied = true;
                         player.hasAnxiety = true;
@@ -120,7 +120,7 @@ public class BattleManager : MonoBehaviour
                         player.anxietyDamage = enemies[i].GetComponent<AnxietyDebuff>().AnxietyDamage;
                     }
                 }
-                if (enemies[i].GetComponent<StunDebuff>() != null)
+                else if (enemies[i].GetComponent<StunDebuff>() != null && enemies[i].stunned == false)
                 {
                     StunDebuff enemyStun = enemies[i].GetComponent<StunDebuff>();
                     EnemyToolTip enemyToolTip = enemies[i].GetComponentInChildren<EnemyToolTip>();
