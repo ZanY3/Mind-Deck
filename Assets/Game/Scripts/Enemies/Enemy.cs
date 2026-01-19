@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     private int currentHealth;
     private int damage;
+
     private BattleManager battleManager;
     [HideInInspector] public int stunTurnsLeft = 0;
 
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour
             debuffDamageTxt.text = GetComponent<AnxietyDebuff>().AnxietyDamage.ToString();
         }
     }
-    public void TakeDamage(int value)
+    public void TakeDamage(int value) //Maybe it will be overrided in boss to
     {
         currentHealth -= value;
         UpdateUI();
@@ -64,8 +65,8 @@ public class Enemy : MonoBehaviour
         GetComponentInChildren<EnemyToolTip>().UpdateStunToolTip(true);
         stunned = true;
     }
-    public void AttackPlayer()
+    public virtual void AttackPlayer()
     {
-        player.TakeDamage(enemyData.damage);
+        player.TakeDamage(damage);
     }
 }

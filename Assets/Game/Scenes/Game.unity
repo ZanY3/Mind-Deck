@@ -428,7 +428,7 @@ MonoBehaviour:
   numberOfStages: 7
   playerDefense: {fileID: 1397727169}
   enemiesPrefabs:
-  - {fileID: 1816550486874978644, guid: 7faffba7115f81f4a9bd2173b03dfe20, type: 3}
+  - {fileID: 8944439527343392059, guid: 4640360e6c03d0044a2424edf227f5a8, type: 3}
   - {fileID: 919055057233421266, guid: 04a359a47af678742a1fdc855ed98691, type: 3}
   - {fileID: 5978665549588100378, guid: f49653eceae247343b971868c3e648f0, type: 3}
   - {fileID: 2601725641773459835, guid: 426b59197cbf67a4ba6b04e9575b4be0, type: 3}

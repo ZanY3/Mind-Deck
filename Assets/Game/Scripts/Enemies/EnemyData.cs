@@ -13,7 +13,8 @@ public class EnemyData : ScriptableObject
     {
         Attacker,
         Debuffer,
-        Defender
+        Defender,
+        Boss
     }
 
     public EnemyType enemyType;
