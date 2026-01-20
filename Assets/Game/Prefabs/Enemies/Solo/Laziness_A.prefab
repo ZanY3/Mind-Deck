@@ -441,6 +441,9 @@ MonoBehaviour:
   damageTxt: {fileID: 4508267159312989986}
   debuffDamageTxt: {fileID: 0}
   stunned: 0
+  currentHealth: 0
+  maxHealth: 0
+  damage: 0
   stunTurnsLeft: 0
 --- !u!114 &3308693822043084406
 MonoBehaviour:

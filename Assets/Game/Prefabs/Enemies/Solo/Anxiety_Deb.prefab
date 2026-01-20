@@ -169,7 +169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3138066604293132115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -389,6 +389,9 @@ MonoBehaviour:
   damageTxt: {fileID: 5395908084412173313}
   debuffDamageTxt: {fileID: 1873730021137453429}
   stunned: 0
+  currentHealth: 0
+  maxHealth: 0
+  damage: 0
   stunTurnsLeft: 0
 --- !u!114 &661293709851838707
 MonoBehaviour:

@@ -15,15 +15,16 @@ public class Enemy : MonoBehaviour
 
     private PlayerHealth player;
 
-    private int currentHealth;
-    private int damage;
+    [HideInInspector] public int currentHealth;
+    [HideInInspector] public int maxHealth;
+    [HideInInspector] public int damage;
 
     private BattleManager battleManager;
     [HideInInspector] public int stunTurnsLeft = 0;
 
     public EnemyData Data => enemyData;
 
-    private void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         battleManager = FindAnyObjectByType<BattleManager>();
@@ -37,6 +38,7 @@ public class Enemy : MonoBehaviour
     public void ReadData()
     {
         currentHealth = enemyData.health;
+        maxHealth = currentHealth;
         damage = enemyData.damage;
     }
     public void UpdateUI()
@@ -56,6 +58,10 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             battleManager.RemoveEnemy(this);
+            if(GetComponent<BossPhaseController>() != null)
+            {
+                GetComponent<BossPhaseController>().enemiesSummonedCount--;
+            }
             battleManager.CheckPlayerWin();
             Destroy(gameObject);
         }
