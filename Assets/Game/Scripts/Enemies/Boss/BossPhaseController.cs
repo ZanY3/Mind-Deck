@@ -4,10 +4,10 @@ public class BossPhaseController : MonoBehaviour
 {
     //[SerializeField] private float damageMultiplier;
 
-    [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private RectTransform[] enemiesSpawnPos;
 
-    [HideInInspector] public int enemiesSummonedCount = 0;
+    public int enemiesSummonedCount = 0;
 
     private RectTransform enemySlot;
 
@@ -22,8 +22,7 @@ public class BossPhaseController : MonoBehaviour
         {
             for (int i = 0; i < enemiesSpawnPos.Length; i++)
             {
-                int randNum = Random.Range(0, enemiesSpawnPos.Length);
-                var enemy = Instantiate(enemyPrefabs[randNum]);
+                var enemy = Instantiate(enemyPrefab);
 
                 enemy.transform.SetParent(enemySlot.transform, false);
                 enemy.GetComponent<RectTransform>().position = enemiesSpawnPos[i].position;

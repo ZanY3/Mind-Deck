@@ -41,7 +41,7 @@ public class StageManager : MonoBehaviour
         else
         {
             Debug.LogWarning("All stages was completed");
-            SceneManager.LoadScene("Game");
+            RestartScene();
         }
     }
     IEnumerator WaitForReward()
@@ -61,6 +61,9 @@ public class StageManager : MonoBehaviour
         enemy.transform.SetParent(enemySlotPos.transform, false);
         handManager.DrawHand();
     }
-
+    public void RestartScene()
+    {
+        SceneManager.LoadScene("Game");
+    }
 
 }

@@ -12,8 +12,9 @@ public class BattleManager : MonoBehaviour
     [Header("UI")]
     [Space]
     [SerializeField] private GameObject endTurnBtn;
-    [SerializeField] private GameObject finalPanel;
-    [SerializeField] private TMP_Text finalTxt;
+
+    [SerializeField] private GameObject winFinalPanel;
+    [SerializeField] private GameObject loseFinalPanel;
 
     [HideInInspector] public bool isPlayerTurn = true;
 
@@ -36,7 +37,10 @@ public class BattleManager : MonoBehaviour
     {
         isPlayerTurn = true;
         endTurnBtn.SetActive(true);
-        finalPanel.SetActive(false);
+
+        winFinalPanel.SetActive(false);
+        loseFinalPanel.SetActive(false);
+
         energyManager.RefillEnergy();
     }
     public void EndPlayerTurn() //When we press "End turn"
@@ -68,8 +72,7 @@ public class BattleManager : MonoBehaviour
 
             handManager.ClearHand();
             endTurnBtn.SetActive(false);
-            finalPanel.SetActive(true);
-            finalTxt.text = "VICTORY";
+            winFinalPanel.SetActive(true);
         }
     }
     public void PlayerLose()
@@ -86,8 +89,7 @@ public class BattleManager : MonoBehaviour
         }
         handManager.ClearHand();
         endTurnBtn.SetActive(false);
-        finalPanel.SetActive(true);
-        finalTxt.text = "DEFEAT";
+        loseFinalPanel.SetActive(true);
     }
 
     IEnumerator EnemyAttack()
