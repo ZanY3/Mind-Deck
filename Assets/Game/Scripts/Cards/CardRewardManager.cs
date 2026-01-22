@@ -1,8 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class CardRewardManager : MonoBehaviour
 {
-    [SerializeField] private CardData[] allCards;
+    [SerializeField] private List<CardData> allCards;
+
+    private List<CardData> cards;
+
     [SerializeField] private CardDisplay[] cardTemplates;
     [SerializeField] private DeckManager deckManager;
 
@@ -12,13 +16,25 @@ public class CardRewardManager : MonoBehaviour
 
     public void GetRewardCards(int count)
     {
-        SetCardsInteractable(true);
+        if (cards == null || cards.Count < count)
+        {
+            cards = new List<CardData>(allCards);
+        }
+
         cardsCount = count;
+        SetCardsInteractable(true);
+
+        List<CardData> tempCards = new List<CardData>(cards);
+
         for (int i = 0; i < count; i++)
         {
-            int randNum = Random.Range(0, allCards.Length - 1);
-            cardTemplates[i].cardToDisplay = allCards[randNum];
+            int randNum = Random.Range(0, tempCards.Count);
+            CardData chosenCard = tempCards[randNum];
+
+            cardTemplates[i].cardToDisplay = chosenCard;
             cardTemplates[i].VisualizeCard();
+
+            tempCards.RemoveAt(randNum);
         }
     }
     public void SetCardsInteractable(bool state)
@@ -35,6 +51,8 @@ public class CardRewardManager : MonoBehaviour
     public void ChooseCard(CardData card)
     {
         deckManager.AddCard(card);
+        cards.Remove(card);
+
         SetCardsInteractable(false);
     }
 }

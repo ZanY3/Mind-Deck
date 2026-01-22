@@ -20,7 +20,14 @@ public class EnemyDropTarget : MonoBehaviour, IDropHandler
         }
         if(card.type == CardData.CardType.Attack)
         {
-            enemy.TakeDamage(card.power);
+            if(card.effect == CardData.Effect.RandomPower)
+            {
+                enemy.TakeDamage(eventData.pointerDrag.GetComponent<CardEffects>().RandomPower());
+            }
+            else
+            {
+                enemy.TakeDamage(card.power);
+            }
         }
         else if(card.type == CardData.CardType.SkillOnEnemy)
         {

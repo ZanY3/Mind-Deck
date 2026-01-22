@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -56,9 +57,14 @@ public class DefenseCell : MonoBehaviour, IDropHandler
     {
         CardData card = eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay;
 
-        if (card.type != CardData.CardType.Attack)
+        if (card.type != CardData.CardType.Attack && card.effect != CardData.Effect.RandomPower)
         {
             return;
+        }
+        if(card.effect == CardData.Effect.RandomPower)
+        {
+            int damage = eventData.pointerDrag.GetComponent<CardEffects>().RandomPower();
+            DecreaseDefense(damage);
         }
         else
         {

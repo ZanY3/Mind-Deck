@@ -15,4 +15,8 @@ public class CardEffects : MonoBehaviour
         enemy.ApplyStun();
         Debug.Log("Enemy stunned!");
     }
+    public int RandomPower()
+    {
+        return Random.Range(1, 6);
+    }
 }

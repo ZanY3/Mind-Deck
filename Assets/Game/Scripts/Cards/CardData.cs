@@ -15,7 +15,8 @@ public class CardData : ScriptableObject
     {
         Empty,
         Cleansing,
-        Stun
+        Stun,
+        RandomPower
     }
 
     public CardType type;

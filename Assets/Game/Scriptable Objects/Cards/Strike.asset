@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Strike
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   type: 0
+  effect: 0
   icon: {fileID: 7894308883384308476, guid: 8f4dd7797b7bde047936bbb1fb6a50f7, type: 3}
-  description: Deals 4 damage
-  power: 4
+  description: Deals 5 damage
+  power: 5
   energyCost: 2
