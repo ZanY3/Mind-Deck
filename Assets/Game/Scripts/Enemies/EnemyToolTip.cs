@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,8 +22,12 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
     [Header("Not required")]
     [SerializeField] private GameObject stunnerClue;
 
+    private Vector3 startScale;
+
     private void Start()
     {
+        startScale = tooltip.GetComponent<RectTransform>().localScale;
+        tooltip.transform.DOScale(0, 0); //to make an animation in the future
         FillUI();
     }
 //--------------------------------------------------------------------------------------
@@ -58,6 +63,7 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
         if(!InteractionState.isDraggingCard)
         { 
             ShowUI();
+            tooltip.transform.DOScale(startScale, 0.1f);
         }
     }
     public void OnPointerExit(PointerEventData eventData)
@@ -65,6 +71,7 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
         if (!InteractionState.isDraggingCard)
         {
             HideUI();
+            tooltip.transform.DOScale(0, 0.1f);
         }
     }
     public void ShowUI()

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Boss : Enemy
@@ -15,19 +16,21 @@ public class Boss : Enemy
     public override void AttackPlayer()
     {
         attackTurnCounter++;
-
-        if(attackTurnCounter == 2 || attackTurnCounter == 6 || attackTurnCounter == 10)
-        {
-            phaseController.SummonEnemies();
-        }
-
         base.AttackPlayer();
 
-        if(currentHealth < maxHealth / 2.5f)//for test
+        if((attackTurnCounter == 2 || attackTurnCounter == 6 || attackTurnCounter == 10) && stunned == false)
         {
-            attackTurnCounter = 0;
+            DOVirtual.DelayedCall(0.5f, () =>
+            {
+                phaseController.SummonEnemies();
+            });
+        }
+
+        if(currentHealth < maxHealth / 2.5f)//for tests
+        {
             damage += 2;
             UpdateUI();
+            attackTurnCounter = 0;
         }
     }
 }

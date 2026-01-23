@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class RewardCardUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -22,11 +23,10 @@ public class RewardCardUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //A little bit later i will replace this on doTween animation
-        rectTransform.localScale = startScale * 1.25f;
+        transform.DOScale(startScale * 1.25f, 0.2f).SetEase(Ease.Linear);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        rectTransform.localScale = startScale;
+        transform.DOScale(startScale, 0.2f).SetEase(Ease.Linear);
     }
 }

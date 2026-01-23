@@ -13,7 +13,6 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private EnergyManager energyManager;
     private CardDraggingManager draggingManager;
 
-    //TESTING
     private Vector3 startScale;
 
     [HideInInspector] public bool droppedOnTarget;
@@ -50,7 +49,6 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
 
         transform.DOScale(0.6f, 0.1f).SetEase(Ease.Linear);
-        //rectTransform.localScale = dragScale; //TESTING
 
         InteractionState.isDraggingCard = true;
         GetComponent<CanvasGroup>().blocksRaycasts = false;

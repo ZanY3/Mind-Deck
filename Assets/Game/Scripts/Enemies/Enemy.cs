@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using DG.Tweening;
 
@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(int value) //Maybe it will be overrided in boss to
     {
+        transform.DOShakeScale(0.2f, 1, 10, 80);
         currentHealth -= value;
         UpdateUI();
         //Some effects
@@ -75,10 +76,10 @@ public class Enemy : MonoBehaviour
     public virtual void AttackPlayer()
     {
         Vector3 tempPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        transform.DOMoveX(player.GetComponent<Transform>().position.x, 0.2f).OnComplete(() =>
+        transform.DOMoveX(player.GetComponent<Transform>().position.x, 0.2f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
-            transform.DOMoveX(tempPos.x, 0.15f);
+            player.TakeDamage(damage);
+            transform.DOMoveX(tempPos.x, 0.2f).SetEase(Ease.InOutQuad);
         });
-        player.TakeDamage(damage);
     }
 }
