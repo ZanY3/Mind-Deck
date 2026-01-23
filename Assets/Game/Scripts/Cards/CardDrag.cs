@@ -1,7 +1,7 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEngine.GraphicsBuffer;
+using DG.Tweening;
 
 public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -15,7 +15,6 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     //TESTING
     private Vector3 startScale;
-    private Vector3 dragScale;
 
     [HideInInspector] public bool droppedOnTarget;
 
@@ -29,7 +28,6 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         draggingManager = FindAnyObjectByType<CardDraggingManager>();
 
         startScale = rectTransform.localScale;
-        dragScale = startScale * 0.8f;
     }
 //--------------------------------------------------------------------------------------
     public void OnBeginDrag(PointerEventData eventData)
@@ -49,13 +47,15 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if(type == CardData.CardType.Defence || type == CardData.CardType.SkillOnPlayer)
         {
             draggingManager.SetPlayerTooltipState(true);
-        }    
+        }
 
-        rectTransform.localScale = dragScale; //TESTING
+        transform.DOScale(0.6f, 0.1f).SetEase(Ease.Linear);
+        //rectTransform.localScale = dragScale; //TESTING
 
         InteractionState.isDraggingCard = true;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
         droppedOnTarget = false;
+
         startPosition = rectTransform.anchoredPosition;
 
         cardCanvas.overrideSorting = true;
@@ -71,7 +71,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        rectTransform.localScale = startScale; //TESTING
+        transform.DOScale(startScale, 0.1f).SetEase(Ease.Linear);
 
         InteractionState.isDraggingCard = false;
         cardCanvas.overrideSorting = false;

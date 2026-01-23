@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
@@ -73,6 +74,11 @@ public class Enemy : MonoBehaviour
     }
     public virtual void AttackPlayer()
     {
+        Vector3 tempPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        transform.DOMoveX(player.GetComponent<Transform>().position.x, 0.2f).OnComplete(() =>
+        {
+            transform.DOMoveX(tempPos.x, 0.15f);
+        });
         player.TakeDamage(damage);
     }
 }
