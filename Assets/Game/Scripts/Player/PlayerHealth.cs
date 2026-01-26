@@ -39,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(currentHealth > 0)
         {
+            CameraShake.Shake(0.4f, 0.4f);
             currentHealth -= defense.CalculateDamage(damage);
             UpdateUI();
         }
