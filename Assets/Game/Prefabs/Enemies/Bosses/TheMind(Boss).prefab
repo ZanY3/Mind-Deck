@@ -1523,6 +1523,7 @@ MonoBehaviour:
   maxHealth: 0
   damage: 0
   stunTurnsLeft: 0
+  phase2Sprite: {fileID: -1974071570951473406, guid: a635dc1f8ad6ada48950b234b5934f1a, type: 3}
 --- !u!114 &1269699023576059515
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private GameObject cardRewardPanel;
     [SerializeField] private CardRewardManager rewardManager;
     [SerializeField] private DeckManager deckManager;
+    [SerializeField] private GameObject handPanel;
 
     private void Start()
     {
@@ -46,12 +47,14 @@ public class StageManager : MonoBehaviour
     }
     IEnumerator WaitForReward()
     {
+        handPanel.SetActive(false);
         cardRewardPanel.SetActive(true);
-
+        
         //waiting until player will pick a card
         yield return new WaitUntil(() => rewardManager.hasChosenCard);
 
         cardRewardPanel.SetActive(false);
+        handPanel.SetActive(true);
     }
 
     public void StartStage()

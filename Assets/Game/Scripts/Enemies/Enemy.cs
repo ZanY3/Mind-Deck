@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private TMP_Text healthTxt;
     [SerializeField] private TMP_Text damageTxt;
 
+
     [Space]
     [Header("Not required")]
     [SerializeField] private TMP_Text debuffDamageTxt;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public int stunTurnsLeft = 0;
 
     public EnemyData Data => enemyData;
+
 
     protected virtual void Start()
     {
@@ -53,13 +55,13 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(int value) //Maybe it will be overrided in boss to
     {
-        transform.DOShakeScale(0.2f, 1, 10, 80);
+        transform.DOShakeScale(0.15f, 1, 10, 80);
         currentHealth -= value;
         UpdateUI();
         //Some effects
         if (currentHealth <= 0)
         {
-            if(enemyData.name == "Brain Leech")
+            if(enemyData.name == "Brain Leech" && FindAnyObjectByType<BossPhaseController>() != null)
             {
                 FindAnyObjectByType<BossPhaseController>().enemiesSummonedCount--;
             }

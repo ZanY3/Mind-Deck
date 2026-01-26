@@ -441,6 +441,7 @@ MonoBehaviour:
   cardRewardPanel: {fileID: 904458415}
   rewardManager: {fileID: 1174023037}
   deckManager: {fileID: 1702557157}
+  handPanel: {fileID: 1975157956}
 --- !u!1 &154507790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1334,7 @@ MonoBehaviour:
   energyManager: {fileID: 1020069}
   player: {fileID: 1397727168}
   endTurnBtn: {fileID: 317310088}
+  handPanel: {fileID: 1975157956}
   winFinalPanel: {fileID: 1101623035}
   loseFinalPanel: {fileID: 694664844}
   isPlayerTurn: 1

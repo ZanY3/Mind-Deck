@@ -1,15 +1,20 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : Enemy
 {
+    public Sprite phase2Sprite;
     private BossPhaseController phaseController;
 
     private int attackTurnCounter = 0;
+    private Image image;
+    private bool phase2 = false;
 
     protected override void Start()
     {
         base.Start();
+        image = transform.GetChild(1).GetComponentInChildren<Image>();
         phaseController = GetComponent<BossPhaseController>();
     }
 
@@ -26,8 +31,9 @@ public class Boss : Enemy
             });
         }
 
-        if(currentHealth < maxHealth / 2.5f)//for tests
+        if(currentHealth < maxHealth / 2.5f)// PHASE 2
         {
+            image.sprite = phase2Sprite;
             damage += 2;
             UpdateUI();
             attackTurnCounter = 0;

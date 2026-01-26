@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
     [Header("UI")]
     [Space]
     [SerializeField] private GameObject endTurnBtn;
+    [SerializeField] private GameObject handPanel;
 
     [SerializeField] private GameObject winFinalPanel;
     [SerializeField] private GameObject loseFinalPanel;
@@ -87,9 +88,9 @@ public class BattleManager : MonoBehaviour
         {
             enemies[i].enabled = false;
         }
-        handManager.ClearHand();
         endTurnBtn.SetActive(false);
         loseFinalPanel.SetActive(true);
+        handPanel.SetActive(false);
     }
 
     IEnumerator EnemyAttack()
