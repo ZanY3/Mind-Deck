@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerDefense : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class PlayerDefense : MonoBehaviour
         if (armor != 0)
         {
             armorIcon.SetActive(true);
+            RectTransform iconTransform = armorIcon.GetComponent<RectTransform>();
+            Vector3 startScale = iconTransform.localScale;
+            iconTransform.DOScale(0, 0);
+            iconTransform.DOScale(startScale, 0.1f);
         }
         else
         {

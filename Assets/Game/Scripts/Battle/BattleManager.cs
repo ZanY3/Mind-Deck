@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using TMPro;
+using DG.Tweening;
 
 public class BattleManager : MonoBehaviour
 {
@@ -37,7 +37,8 @@ public class BattleManager : MonoBehaviour
     public void StartBattle()
     {
         isPlayerTurn = true;
-        endTurnBtn.SetActive(true);
+
+        EndBtnSetActive(true);
 
         winFinalPanel.SetActive(false);
         loseFinalPanel.SetActive(false);
@@ -49,7 +50,8 @@ public class BattleManager : MonoBehaviour
         energyManager.RefillEnergy();
         handManager.ClearHand();
         isPlayerTurn = false;
-        endTurnBtn.SetActive(false);
+
+        EndBtnSetActive(false);
         EnemyTurn();
     }
     public void EnemyTurn()
@@ -72,7 +74,7 @@ public class BattleManager : MonoBehaviour
             player.UpdateUI();
 
             handManager.ClearHand();
-            endTurnBtn.SetActive(false);
+            EndBtnSetActive(false);
             winFinalPanel.SetActive(true);
         }
     }
@@ -88,7 +90,7 @@ public class BattleManager : MonoBehaviour
         {
             enemies[i].enabled = false;
         }
-        endTurnBtn.SetActive(false);
+        EndBtnSetActive(false);
         loseFinalPanel.SetActive(true);
         handPanel.SetActive(false);
     }
@@ -163,7 +165,7 @@ public class BattleManager : MonoBehaviour
         {
             player.ChangeStunClueState(false);
             isPlayerTurn = true;
-            endTurnBtn.SetActive(true);
+            EndBtnSetActive(true);
             handManager.DrawHand();
         }
         else if (player.stunned == true)
@@ -178,6 +180,23 @@ public class BattleManager : MonoBehaviour
             {
                 player.turnsUntilStunRemove--;
             }
+        }
+    }
+    public void EndBtnSetActive(bool state)
+    {
+        RectTransform endBtnTransform = endTurnBtn.GetComponent<RectTransform>();
+
+        if(!state)
+        {
+            endBtnTransform.DOAnchorPosY(-200, 0.3f).OnComplete(() =>
+            {
+                endTurnBtn.SetActive(false);
+            });
+        }
+        else
+        {
+            endTurnBtn.SetActive(true);
+            endBtnTransform.DOAnchorPosY(135, 0.3f);
         }
     }
 }

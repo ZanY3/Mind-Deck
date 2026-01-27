@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,10 @@ public class HandManager : MonoBehaviour
     public void SpawnCard(CardData data)
     {
         GameObject card = Instantiate(cardPrefab, handParent);
+
+        card.transform.localScale = Vector3.zero;
+        card.transform.DOScale(1f, 0.1f).SetEase(Ease.OutBack);
+
         card.GetComponent<CardDisplay>().cardToDisplay = data;
         card.GetComponent<CardDisplay>().VisualizeCard();
     }

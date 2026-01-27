@@ -61,13 +61,29 @@ public class Enemy : MonoBehaviour
         //Some effects
         if (currentHealth <= 0)
         {
-            if(enemyData.name == "Brain Leech" && FindAnyObjectByType<BossPhaseController>() != null)
+            currentHealth = 0; //for ui
+            if (enemyData.name == "Brain Leech" && FindAnyObjectByType<BossPhaseController>() != null)
             {
                 FindAnyObjectByType<BossPhaseController>().enemiesSummonedCount--;
             }
-            battleManager.RemoveEnemy(this);
-            battleManager.CheckPlayerWin();
-            Destroy(gameObject);
+            if (GetComponent<Boss>() != null)
+            {
+                transform.DOShakeScale(1, 2, 10).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                    battleManager.RemoveEnemy(this);
+                    battleManager.CheckPlayerWin();
+                    Destroy(gameObject);
+                });
+            }
+            else
+            {
+                transform.DOScale(0, 0.15f).SetEase(Ease.Flash).OnComplete(() =>
+                {
+                    battleManager.RemoveEnemy(this);
+                    battleManager.CheckPlayerWin();
+                    Destroy(gameObject);
+                });
+            }
         }
     }
     public void ApplyStun()
