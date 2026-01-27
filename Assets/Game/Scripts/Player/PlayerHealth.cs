@@ -1,6 +1,8 @@
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private TMP_Text healthTxt;
 
     [HideInInspector] public int turnsUntilStunRemove = 0;
+    private Tween clueTween;
 
     private void Start()
     {
@@ -63,6 +66,19 @@ public class PlayerHealth : MonoBehaviour
     public void ChangeDraggingClueState(bool state)
     {
         cardDraggingImg.SetActive(state);
+
+        Image image = cardDraggingImg.GetComponent<Image>();
+        clueTween?.Kill();
+
+        if (state)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+            clueTween = image.DOFade(0.1f, 0.2f).SetLoops(-1, LoopType.Yoyo);
+        }
+        else
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+        }
     }
     public void ClearAllDebuffs()
     {

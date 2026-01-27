@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class BossPhaseController : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class BossPhaseController : MonoBehaviour
 
                 enemy.transform.SetParent(enemySlot.transform, false);
                 enemy.GetComponent<RectTransform>().position = enemiesSpawnPos[i].position;
-
+                enemy.transform.DOShakePosition(0.5f, 6, 15);
                 enemiesSummonedCount++;
                 enemy.GetComponent<Enemy>().ApplyStun();
             }

@@ -36,7 +36,15 @@ public class PlayerDefense : MonoBehaviour
             armorIcon.SetActive(true);
             RectTransform iconTransform = armorIcon.GetComponent<RectTransform>();
             Vector3 startScale = iconTransform.localScale;
-            iconTransform.DOScale(0, 0);
+
+            if(armor == 2)
+            {
+                iconTransform.DOScale(0, 0);
+            }
+            else
+            {
+                iconTransform.DOScale(0.5f, 0.1f);
+            }
             iconTransform.DOScale(startScale, 0.1f);
         }
         else

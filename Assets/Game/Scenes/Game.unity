@@ -3988,7 +3988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8548521038035828854, guid: 275475c784ece124a804f883811d041f, type: 3}
       propertyPath: m_Color.a
-      value: 0.05882353
+      value: 0.039215688
       objectReference: {fileID: 0}
     - target: {fileID: 8548521038035828854, guid: 275475c784ece124a804f883811d041f, type: 3}
       propertyPath: m_RaycastTarget
@@ -5464,7 +5464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -39, y: 185}
+  m_AnchoredPosition: {x: -22, y: 185}
   m_SizeDelta: {x: 950, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1975157958

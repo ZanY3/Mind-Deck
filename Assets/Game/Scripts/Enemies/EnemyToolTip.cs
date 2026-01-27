@@ -23,6 +23,7 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
     [SerializeField] private GameObject stunnerClue;
 
     private Vector3 startScale;
+    private Tween clueTween;
 
     private void Start()
     {
@@ -53,6 +54,17 @@ public class EnemyToolTip : MonoBehaviour,IPointerEnterHandler, IPointerExitHand
     public void UpdateDragTooltip(bool state)
     {
         cardDragTooltip.SetActive(state);
+        Image image = cardDragTooltip.GetComponent<Image>();
+        clueTween?.Kill();
+        if (state)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+            clueTween = image.DOFade(0.2f, 0.2f).SetLoops(-1, LoopType.Yoyo);
+        }
+        else
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+        }
     }
     public void UpdateStunClue(bool state)
     {

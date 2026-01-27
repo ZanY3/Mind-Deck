@@ -62,12 +62,15 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0; //for ui
+            UpdateUI();
+
             if (enemyData.name == "Brain Leech" && FindAnyObjectByType<BossPhaseController>() != null)
             {
                 FindAnyObjectByType<BossPhaseController>().enemiesSummonedCount--;
             }
             if (GetComponent<Boss>() != null)
             {
+                battleManager.EndBtnSetActive(false);
                 transform.DOShakeScale(1, 2, 10).SetEase(Ease.Linear).OnComplete(() =>
                 {
                     battleManager.RemoveEnemy(this);
