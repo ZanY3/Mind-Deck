@@ -25,6 +25,11 @@ public class EnergyManager : MonoBehaviour
             UpdateUI();
         }
     }
+    public void IncreaseEnergy(int value)
+    {
+        currentEnergy += value;
+        UpdateUI();
+    }
     public bool CheckIsEnoughOnCard(int value)
     {
         if(currentEnergy >= value)

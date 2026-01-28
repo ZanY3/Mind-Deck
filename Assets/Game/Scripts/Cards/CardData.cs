@@ -16,7 +16,8 @@ public class CardData : ScriptableObject
         Empty,
         Cleansing,
         Stun,
-        RandomPower
+        RandomPower,
+        BloodPact
     }
 
     public CardType type;

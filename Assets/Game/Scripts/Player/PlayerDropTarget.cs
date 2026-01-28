@@ -24,9 +24,15 @@ public class PlayerDropTarget : MonoBehaviour, IDropHandler
         }
         else if (card.type == CardData.CardType.SkillOnPlayer)
         {
-            if (eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay.effect == CardData.Effect.Cleansing && GetComponent<PlayerHealth>().hasAnxiety)
+            CardData cardTemp = eventData.pointerDrag.GetComponent<CardDisplay>().cardToDisplay;
+            if (cardTemp.effect == CardData.Effect.Cleansing && GetComponent<PlayerHealth>().hasAnxiety)
             {
                 eventData.pointerDrag.GetComponent<CardEffects>().RemoveAllDebuffs(GetComponent<PlayerHealth>());
+            }
+            if(cardTemp.effect == CardData.Effect.BloodPact)
+            {
+                FindAnyObjectByType<EnergyManager>().IncreaseEnergy(1);
+                GetComponent<PlayerHealth>().TakeDamage(4);
             }
             else
             {
