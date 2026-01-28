@@ -21,6 +21,11 @@ public class HandManager : MonoBehaviour
             //CardData data = cards[Random.Range(0, cards.Count)];
         }
     }
+    public void DrawOneCard()
+    {
+        CardData data = deckManager.DrawCard();
+        SpawnCard(data);
+    }
     public void SpawnCard(CardData data)
     {
         GameObject card = Instantiate(cardPrefab, handParent);

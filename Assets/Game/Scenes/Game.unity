@@ -2846,6 +2846,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5e1b4f7c7f6e5a44483c27bc4d6a08d3, type: 2}
   - {fileID: 11400000, guid: 8e88d1ef3e7c08e45bc98b314b5878f4, type: 2}
   - {fileID: 11400000, guid: 37b953edb52f353449d8a28f8e0e8ce5, type: 2}
+  - {fileID: 11400000, guid: 79cebd7addb0f494a9f50c5cc8a72a4c, type: 2}
+  - {fileID: 11400000, guid: 224293e1d4fa8044289e526d0ae1cb0c, type: 2}
   cardTemplates:
   - {fileID: 2097190796}
   - {fileID: 1873815704}
@@ -4958,6 +4960,7 @@ MonoBehaviour:
   startDeck:
   - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
   - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
+  - {fileID: 11400000, guid: 224293e1d4fa8044289e526d0ae1cb0c, type: 2}
   - {fileID: 11400000, guid: 73886f53cdea3d34fa3e402ad531dceb, type: 2}
   - {fileID: 11400000, guid: 5f7de41eac637e54eab46c497018f303, type: 2}
 --- !u!1 &1739304504

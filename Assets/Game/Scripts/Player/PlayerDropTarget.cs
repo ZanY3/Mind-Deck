@@ -31,8 +31,13 @@ public class PlayerDropTarget : MonoBehaviour, IDropHandler
             }
             if(cardTemp.effect == CardData.Effect.BloodPact)
             {
-                FindAnyObjectByType<EnergyManager>().IncreaseEnergy(1);
                 GetComponent<PlayerHealth>().TakeDamage(4);
+                FindAnyObjectByType<EnergyManager>().IncreaseEnergy(1);
+            }
+            if(cardTemp.effect == CardData.Effect.BloodDraw)
+            {
+                GetComponent<PlayerHealth>().TakeDamage(2);
+                FindAnyObjectByType<HandManager>().DrawOneCard();
             }
             else
             {
