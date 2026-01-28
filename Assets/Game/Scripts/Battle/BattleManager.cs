@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using DG.Tweening;
@@ -38,6 +38,10 @@ public class BattleManager : MonoBehaviour
     {
         isPlayerTurn = true;
 
+        EndBtnSetActive(true);
+
+        RectTransform rt = endTurnBtn.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -200);
         EndBtnSetActive(true);
 
         winFinalPanel.SetActive(false);
@@ -105,7 +109,9 @@ public class BattleManager : MonoBehaviour
         {
             if (enemies[i].Data.enemyType == EnemyData.EnemyType.Defender && enemies[i].GetComponentInChildren<DefenseCell>() != null && enemies[i].stunned == false)
             {
+                enemies[i].transform.DOShakeScale(duration: 0.15f, strength: new Vector3(0.15f, 0.15f, 0));
                 enemies[i].GetComponentInChildren<DefenseCell>().RefillDefense();
+                yield return new WaitForSeconds(0.35f);
                 //Some animations for enemy attack
                 yield return new WaitForSeconds(1.5f);
             }
@@ -116,13 +122,16 @@ public class BattleManager : MonoBehaviour
                 {
                     if (!player.hasAnxiety && !enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied && enemies[i].stunned == false)
                     {
-                        enemies[i].GetComponent<AnxietyDebuff>().startAnxietyApplied = true;
-                        player.hasAnxiety = true;
+                        Enemy enemy = enemies[i];
 
-                        Debug.LogWarning("Anxiety = true");
+                        Tween castTween = enemy.transform.DOShakePosition(0.25f, new Vector3(6f, 3f, 0), 12, 90, false, true);
+                        enemy.GetComponent<AnxietyDebuff>().startAnxietyApplied = true;
+                        player.hasAnxiety = true;
+                        player.anxietyDamage = enemy.GetComponent<AnxietyDebuff>().AnxietyDamage;
                         player.UpdateUI();
 
-                        player.anxietyDamage = enemies[i].GetComponent<AnxietyDebuff>().AnxietyDamage;
+                        yield return castTween.WaitForCompletion(); //ЖДЁМ АНИМАЦИЮ
+
                     }
                 }
                 else if (enemies[i].GetComponent<StunDebuff>() != null && enemies[i].stunned == false)
@@ -170,7 +179,8 @@ public class BattleManager : MonoBehaviour
         }
         else if (player.stunned == true)
         {
-            EndPlayerTurn();
+            isPlayerTurn = false;
+            EndBtnSetActive(false);
             player.ChangeStunClueState(true);
             if (player.turnsUntilStunRemove <= 0)
             {
@@ -181,12 +191,22 @@ public class BattleManager : MonoBehaviour
                 player.turnsUntilStunRemove--;
             }
         }
+        if (!player.stunned)
+        {
+            isPlayerTurn = true;
+            EndBtnSetActive(true);
+            handManager.DrawHand();
+        }
+        if (winFinalPanel.activeSelf || loseFinalPanel.activeSelf)
+            yield break;
     }
     public void EndBtnSetActive(bool state)
     {
         RectTransform endBtnTransform = endTurnBtn.GetComponent<RectTransform>();
+        endBtnTransform.DOKill();
 
-        if(!state)
+
+        if (!state)
         {
             endBtnTransform.DOAnchorPosY(-200, 0.3f).OnComplete(() =>
             {

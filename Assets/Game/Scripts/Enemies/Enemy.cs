@@ -75,6 +75,10 @@ public class Enemy : MonoBehaviour
                 {
                     battleManager.RemoveEnemy(this);
                     battleManager.CheckPlayerWin();
+                    if(battleManager.enemies.Count > 0)
+                    {
+                        battleManager.EndBtnSetActive(true);
+                    }
                     Destroy(gameObject);
                 });
             }

@@ -53,7 +53,7 @@ public class DeckManager : MonoBehaviour
     }
     public void AddCard(CardData card)
     {
-        deck.Add(card);
+        deck.Insert(deck.Count, card);
         Debug.Log(card + " added.");
     }
 }

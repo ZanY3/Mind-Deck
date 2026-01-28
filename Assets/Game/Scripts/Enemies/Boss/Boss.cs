@@ -9,7 +9,6 @@ public class Boss : Enemy
 
     private int attackTurnCounter = 0;
     private Image image;
-    private bool phase2 = false;
 
     protected override void Start()
     {

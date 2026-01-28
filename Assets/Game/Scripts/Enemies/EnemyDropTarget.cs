@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class EnemyDropTarget : MonoBehaviour, IDropHandler
 {
@@ -33,6 +34,8 @@ public class EnemyDropTarget : MonoBehaviour, IDropHandler
         {
             if(card.effect == CardData.Effect.Stun)
             {
+                enemy.transform.DOShakeScale(duration: 0.15f, strength: new Vector3(0.15f, 0.15f, 0));
+
                 eventData.pointerDrag.GetComponent<CardEffects>().Stun(enemy);
             }
         }
